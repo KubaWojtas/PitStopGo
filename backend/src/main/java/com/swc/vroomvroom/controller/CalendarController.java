@@ -1,9 +1,7 @@
 package main.java.com.swc.vroomvroom.controller;
 
 import main.java.com.swc.vroomvroom.model.Calendar;
-import main.java.com.swc.vroomvroom.model.Track;
 import main.java.com.swc.vroomvroom.service.CalendarService;
-import main.java.com.swc.vroomvroom.service.TrackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,6 +33,11 @@ public class CalendarController {
     @PostMapping("/{id}/addTrack/{trackId}")
     public Calendar addTrackToCalendar(@PathVariable("id") int id, @PathVariable("trackId") int trackId) {
         return service.addTrackToCalendar(id, trackId);
+    }
+
+    @PostMapping("/{id}/removeTrack/{trackId}")
+    public Calendar removeTrackOfCalendar(@PathVariable("id") int id, @PathVariable("trackId") int trackId) {
+        return service.removeTrackOfCalendar(id, trackId);
     }
 
     @DeleteMapping("/{id}/delete")

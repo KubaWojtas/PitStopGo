@@ -37,6 +37,14 @@ public class CalendarService {
         return calendar;
     }
 
+    @Transactional
+    public Calendar removeTrackOfCalendar(int calenderId, int trackId) {
+        Calendar calendar = getCalendarById(calenderId);
+        Track track = trackService.getTrackById(trackId);
+        calendar.removeTrack(track);
+        return calendar;
+    }
+
     public String deleteCalendarById(int id) {
         calendarRepository.deleteById(id);
         return "Calender got deleted";

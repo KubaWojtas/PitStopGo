@@ -24,4 +24,8 @@ public class Calendar {
     public void addTrack(Track track) {
         tracks.add(track);
     }
+
+    public void removeTrack(Track track) {
+        tracks.remove(track);
+    }
 }
