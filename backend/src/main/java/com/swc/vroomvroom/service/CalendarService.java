@@ -2,6 +2,7 @@ package main.java.com.swc.vroomvroom.service;
 
 import jakarta.transaction.Transactional;
 import main.java.com.swc.vroomvroom.model.Calendar;
+import main.java.com.swc.vroomvroom.model.Team;
 import main.java.com.swc.vroomvroom.model.Track;
 import main.java.com.swc.vroomvroom.repository.CalendarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,19 @@ public class CalendarService {
         Track track = trackService.getTrackById(trackId);
         calendar.removeTrack(track);
         return calendar;
+    }
+
+    public Calendar updateCalendar(Calendar calendar) {
+        Calendar old = getCalendarById(calendar.getCalendarId());
+        if (old != null) {
+            old.setName(calendar.getName());
+            old.setTracks(calendar.getTracks());
+            calendarRepository.save(old);
+        }
+        else {
+            return new Calendar();
+        }
+        return old;
     }
 
     public String deleteCalendarById(int id) {

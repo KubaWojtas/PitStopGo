@@ -1,5 +1,6 @@
 package main.java.com.swc.vroomvroom.service;
 
+import main.java.com.swc.vroomvroom.model.Team;
 import main.java.com.swc.vroomvroom.model.Track;
 import main.java.com.swc.vroomvroom.repository.TrackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,18 @@ public class TrackService {
 
     public List<Track> createTracks(List<Track> tracks) {
         return (List<Track>) trackRepository.saveAll(tracks);
+    }
+
+    public Track updateTrack(Track track) {
+        Track old = getTrackById(track.getTrackId());
+        if (old != null) {
+            old.setName(track.getName());
+            trackRepository.save(old);
+        }
+        else {
+            return new Track();
+        }
+        return old;
     }
 
     public String deleteTrackById(int id) {

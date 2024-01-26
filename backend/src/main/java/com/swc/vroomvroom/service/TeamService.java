@@ -31,6 +31,18 @@ public class TeamService {
         return (List<Team>) teamRepository.saveAll(teams);
     }
 
+    public Team updateTeam(Team team) {
+        Team old = getTeamById(team.getTeamId());
+        if (old != null) {
+            old.setName(team.getName());
+            teamRepository.save(old);
+        }
+        else {
+            return new Team();
+        }
+        return old;
+    }
+
     public String deleteTeamById(int id) {
         teamRepository.deleteById(id);
         return "Team got deleted";

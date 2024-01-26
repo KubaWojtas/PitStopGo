@@ -33,6 +33,11 @@ public class TeamController {
         return service.createTeam(team);
     }
 
+    @PutMapping("/update")
+    public Team updateTeam(@RequestBody Team team) {
+        return service.updateTeam(team);
+    }
+
     @DeleteMapping("/{id}/delete")
     public void deleteById(@PathVariable("id") int id) {
         service.deleteTeamById(id);
