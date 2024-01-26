@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+@Data
 @Entity
 @Table(name = "CALENDER")
 public class Calendar {
@@ -19,33 +20,6 @@ public class Calendar {
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Track> tracks = new HashSet<>();
-
-    public Calendar() {
-    }
-
-    public int getCalendarId() {
-        return calendarId;
-    }
-
-    public void setCalendarId(int calendarId) {
-        this.calendarId = calendarId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Set<Track> getTracks() {
-        return tracks;
-    }
-
-    public void setTracks(Set<Track> tracks) {
-        this.tracks = tracks;
-    }
 
     public void addTrack(Track track) {
         tracks.add(track);
