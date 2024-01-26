@@ -26,12 +26,12 @@ public class DriverService {
         return driverRepository.findById(id).orElse(null);
     }
 
-    public Set<Driver> getAllDrivers() {
-        return (Set<Driver>) driverRepository.findAll();
+    public List<Driver> getAllDrivers() {
+        return (List<Driver>) driverRepository.findAll();
     }
 
     public Driver updateDriver(Driver driver) {
-        Driver old = getDriverById(driver.getId());
+        Driver old = getDriverById(driver.getDriverId());
         if (old != null) {
             old.setName(driver.getName());
             old.setTeam(driver.getTeam());

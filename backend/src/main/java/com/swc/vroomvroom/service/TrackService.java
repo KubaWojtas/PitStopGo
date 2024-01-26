@@ -26,8 +26,8 @@ public class TrackService {
         return trackRepository.findById(id).orElse(null);
     }
 
-    public Set<Track> getAllTracks() {
-        return (Set<Track>) trackRepository.findAll();
+    public List<Track> getAllTracks() {
+        return (List<Track>) trackRepository.findAll();
     }
 
     public String deleteTrackById(int id) {

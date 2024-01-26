@@ -5,6 +5,7 @@ import main.java.com.swc.vroomvroom.service.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -26,7 +27,7 @@ public class DriverController {
     }
 
     @GetMapping("/drivers")
-    public Set<Driver> findAll() {
+    public List<Driver> findAll() {
         return service.getAllDrivers();
     }
 

@@ -27,8 +27,8 @@ public class TeamService {
         return teamRepository.findById(id).orElse(null);
     }
 
-    public Set<Team> getAllTeams() {
-        return (Set<Team>) teamRepository.findAll();
+    public List<Team> getAllTeams() {
+        return (List<Team>) teamRepository.findAll();
     }
 
     public String deleteTeamById(int id) {

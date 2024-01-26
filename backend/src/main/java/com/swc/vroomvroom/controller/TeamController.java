@@ -7,6 +7,7 @@ import main.java.com.swc.vroomvroom.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -28,7 +29,7 @@ public class TeamController {
     }
 
     @GetMapping("/teams")
-    public Set<Team> findAll() {
+    public List<Team> findAll() {
         return service.getAllTeams();
     }
 
