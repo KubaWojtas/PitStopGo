@@ -12,28 +12,28 @@ import java.util.Set;
 
 @RestController
 @CrossOrigin()
-@RequestMapping("/api")
+@RequestMapping("/api/teams")
 public class TeamController {
 
     @Autowired
     private TeamService service;
 
-    @PostMapping("/teams/add")
-    public Team addTeam(@RequestBody Team team) {
-        return service.createTeam(team);
-    }
-
-    @GetMapping("/teams/{id}")
+    @GetMapping("/{id}")
     public Team findById(@PathVariable("id") int id) {
         return service.getTeamById(id);
     }
 
-    @GetMapping("/teams")
+    @GetMapping()
     public List<Team> findAll() {
         return service.getAllTeams();
     }
 
-    @DeleteMapping("/teams/{id}/delete")
+    @PostMapping("/add")
+    public Team addTeam(@RequestBody Team team) {
+        return service.createTeam(team);
+    }
+
+    @DeleteMapping("/{id}/delete")
     public void deleteById(@PathVariable("id") int id) {
         service.deleteTeamById(id);
     }

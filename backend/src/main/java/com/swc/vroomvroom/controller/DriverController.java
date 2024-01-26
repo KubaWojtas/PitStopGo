@@ -10,28 +10,28 @@ import java.util.Set;
 
 @RestController
 @CrossOrigin()
-@RequestMapping("/api")
+@RequestMapping("/api/drivers")
 public class DriverController {
 
     @Autowired
     private DriverService service;
 
-    @PostMapping("/drivers/add")
-    public Driver addDriver(@RequestBody Driver driver) {
-        return service.createDriver(driver);
-    }
-
-    @GetMapping("/drivers/{id}")
+    @GetMapping("/{id}")
     public Driver findById(@PathVariable("id") int id) {
         return service.getDriverById(id);
     }
 
-    @GetMapping("/drivers")
+    @GetMapping()
     public List<Driver> findAll() {
         return service.getAllDrivers();
     }
 
-    @DeleteMapping("/drivers/{id}/delete")
+    @PostMapping("/add")
+    public Driver addDriver(@RequestBody Driver driver) {
+        return service.createDriver(driver);
+    }
+
+    @DeleteMapping("/{id}/delete")
     public void deleteById(@PathVariable("id") int id) {
         service.deleteDriverById(id);
     }

@@ -14,20 +14,20 @@ public class TrackService {
     @Autowired
     private TrackRepository trackRepository;
 
-    public Track createTrack(Track track) {
-        return trackRepository.save(track);
-    }
-
-    public List<Track> createTracks(List<Track> tracks) {
-        return (List<Track>) trackRepository.saveAll(tracks);
-    }
-
     public Track getTrackById(int id) {
         return trackRepository.findById(id).orElse(null);
     }
 
     public List<Track> getAllTracks() {
         return (List<Track>) trackRepository.findAll();
+    }
+
+    public Track createTrack(Track track) {
+        return trackRepository.save(track);
+    }
+
+    public List<Track> createTracks(List<Track> tracks) {
+        return (List<Track>) trackRepository.saveAll(tracks);
     }
 
     public String deleteTrackById(int id) {

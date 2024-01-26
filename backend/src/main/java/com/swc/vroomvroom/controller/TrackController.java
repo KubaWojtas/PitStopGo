@@ -10,28 +10,28 @@ import java.util.Set;
 
 @RestController
 @CrossOrigin()
-@RequestMapping("/api")
+@RequestMapping("/api/tracks")
 public class TrackController {
 
     @Autowired
     private TrackService service;
 
-    @PostMapping("/tracks/add")
-    public Track addTrack(@RequestBody Track track) {
-        return service.createTrack(track);
-    }
-
-    @GetMapping("/tracks/{id}")
+    @GetMapping("/{id}")
     public Track findById(@PathVariable("id") int id) {
         return service.getTrackById(id);
     }
 
-    @GetMapping("/tracks")
+    @GetMapping()
     public List<Track> findAll() {
         return service.getAllTracks();
     }
 
-    @DeleteMapping("/tracks/{id}/delete")
+    @PostMapping("/add")
+    public Track addTrack(@RequestBody Track track) {
+        return service.createTrack(track);
+    }
+
+    @DeleteMapping("/{id}/delete")
     public void deleteById(@PathVariable("id") int id) {
         service.deleteTrackById(id);
     }

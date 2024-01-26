@@ -15,20 +15,20 @@ public class TeamService {
     @Autowired
     private TeamRepository teamRepository;
 
-    public Team createTeam(Team team) {
-        return teamRepository.save(team);
-    }
-
-    public List<Team> createsTeam(List<Team> teams) {
-        return (List<Team>) teamRepository.saveAll(teams);
-    }
-
     public Team getTeamById(int id) {
         return teamRepository.findById(id).orElse(null);
     }
 
     public List<Team> getAllTeams() {
         return (List<Team>) teamRepository.findAll();
+    }
+
+    public Team createTeam(Team team) {
+        return teamRepository.save(team);
+    }
+
+    public List<Team> createsTeam(List<Team> teams) {
+        return (List<Team>) teamRepository.saveAll(teams);
     }
 
     public String deleteTeamById(int id) {
