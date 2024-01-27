@@ -5,7 +5,7 @@ import {ButtonModule} from "primeng/button";
 import {DriverOverviewComponent} from "./driver/driver-overview.component";
 import {CardModule} from "primeng/card";
 import {DriverCardComponent} from "./driver/driver-card.component";
-import {NgClass, NgForOf} from "@angular/common";
+import {CommonModule, NgClass, NgForOf, NgIf} from "@angular/common";
 import {TabViewModule} from "primeng/tabview";
 import {RouterLink} from "@angular/router";
 import {NavComponent} from "./nav/nav.component";
@@ -16,8 +16,11 @@ import {TrackCardComponent} from "./track/track-card.component";
 import {HttpClientModule} from "@angular/common/http";
 import {AddDriverFormComponent} from "./driver/form/add-driver-form.component";
 import {DialogModule} from "primeng/dialog";
+import {SidebarModule} from "primeng/sidebar";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {BrowserModule} from "@angular/platform-browser";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {ChipsModule} from "primeng/chips";
 
 @NgModule({
     declarations: [
@@ -33,6 +36,7 @@ import {BrowserModule} from "@angular/platform-browser";
     ],
     imports: [
         AppComponent,
+        RouterLink,
         ButtonModule,
         CardModule,
         NgClass,
@@ -41,8 +45,11 @@ import {BrowserModule} from "@angular/platform-browser";
         NgForOf,
         HttpClientModule,
         DialogModule,
-        BrowserModule,
-        BrowserAnimationsModule
+        SidebarModule,
+        FormsModule,
+        ChipsModule,
+        ReactiveFormsModule,
+        NgIf,
     ],
     providers: [],
     exports: [

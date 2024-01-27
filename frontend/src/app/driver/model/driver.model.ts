@@ -1,5 +1,5 @@
 export class Driver {
-    id?: any;
+    driverId?: bigint;
     name?: string;
     team?: string;
 }

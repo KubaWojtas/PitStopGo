@@ -20,7 +20,7 @@ export class DriverService {
     }
 
     create(data: any): Observable<any> {
-        return this.http.post(baseUrl, data);
+        return this.http.post(`${baseUrl}/add`, data);
     }
 
     update(id: any, data: any): Observable<any> {
@@ -28,6 +28,6 @@ export class DriverService {
     }
 
     delete(id: any): Observable<any> {
-        return this.http.delete(`${baseUrl}/${id}`);
+        return this.http.delete(`${baseUrl}/${id}/delete`);
     }
 }
