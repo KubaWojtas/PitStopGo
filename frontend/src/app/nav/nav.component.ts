@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
           <p-button [routerLink]="['/drivers']">Drivers</p-button>
           <p-button [routerLink]="['/teams']">Teams</p-button>
           <p-button [routerLink]="['/tracks']">Tracks</p-button>
-          <p-button [routerLink]="['/calender']">Calender</p-button>
+          <p-button [routerLink]="['/calendar']">Calender</p-button>
       </div>
   `
 })

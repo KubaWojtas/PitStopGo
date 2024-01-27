@@ -22,8 +22,8 @@ const routes: Routes = [
     component: TrackOverviewComponent,
   },
   {
-    path: 'calender',
-    component: DriverOverviewComponent,
+    path: 'calendar',
+    component: HubOverviewComponent,
   }
 ];
 export default routes;

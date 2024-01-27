@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {Driver} from "./model/driver.model";
-import {DriverService} from "../services/driver.service";
+import {DriverService} from "../service/driver.service";
 
 @Component({
     selector: 'swc-driver-overview',
     template: `
-        <swc-add-driver-form (driverForm)="driverFormChangeEvent($event)"></swc-add-driver-form>
+        <swc-add-driver-form (driverForm)="addDriver($event)"></swc-add-driver-form>
         <div class="flex justify-content-evenly flex-wrap ">
             <swc-driver-card *ngFor="let driver of drivers"
-                                [driver]="driver"
+                             [driver]="driver"
                              (deleteDriver)="deleteDriver($event)"
             ></swc-driver-card>
         </div>
@@ -16,7 +16,7 @@ import {DriverService} from "../services/driver.service";
 })
 export class DriverOverviewComponent implements OnInit {
 
-    drivers: Driver[] | undefined
+    drivers: Driver[] = [];
 
     constructor(private service: DriverService) {
     }
@@ -35,7 +35,7 @@ export class DriverOverviewComponent implements OnInit {
             )
     }
 
-    driverFormChangeEvent(data: any) {
+    addDriver(data: any) {
         console.log(data)
         this.service.create(data)
             .subscribe(() => this.ngOnInit());

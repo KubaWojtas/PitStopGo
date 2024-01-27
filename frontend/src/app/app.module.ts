@@ -21,6 +21,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ChipsModule} from "primeng/chips";
+import {AddTeamFormComponent} from "./team/form/add-team-form.component";
+import {AddTrackFormComponent} from "./track/form/add-track-form.component";
 
 @NgModule({
     declarations: [
@@ -32,7 +34,9 @@ import {ChipsModule} from "primeng/chips";
         TeamCardComponent,
         TrackOverviewComponent,
         TrackCardComponent,
-        AddDriverFormComponent
+        AddDriverFormComponent,
+        AddTeamFormComponent,
+        AddTrackFormComponent
     ],
     imports: [
         AppComponent,

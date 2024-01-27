@@ -1,18 +1,28 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Track} from "../team/model/team.model";
 
 @Component({
   selector: 'swc-track-card',
   template: `
     <div>
-      <p-card class="card" header="{{Name}}" [style]="{ width: '285px' }">
+      <p-card class="card" header="{{track.name}}" [style]="{ width: '285px' }">
         <ng-template pTemplate="header" class="card-img-top">
-          <img alt="Card" src="../assets/track/{{Name}}.png"/>
+          <img alt="Card" src="../assets/track/{{track.name}}.png"/>
         </ng-template>
+        <p-button label="Delete" (onClick)="delete()"></p-button>
       </p-card>
     </div>
   `
 })
 export class TrackCardComponent {
   @Input()
-  Name!: string
+  track!: Track
+
+  @Output()
+  deleteTrack = new EventEmitter<any>();
+
+  delete() {
+    console.log(this.track.trackId)
+    this.deleteTrack.emit(this.track.trackId)
+  }
 }
