@@ -1,0 +1,1 @@
+INSERT INTO DRIVER (driverId, name, team) VALUES (1, 'Norris', 'McLaren' )

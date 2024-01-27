@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import {HubOverviewComponent} from "./hub/hub-overview.component";
-import {DriverOverviewComponent} from "./driver/driver-overview.component";
-import {TeamOverviewComponent} from "./team/team-overview.component";
-import {TrackOverviewComponent} from "./track/track-overview.component";
+import {HubOverviewComponent} from "../../../UI/src/app/hub/hub-overview.component";
+import {DriverOverviewComponent} from "../../../UI/src/app/driver/driver-overview.component";
+import {TeamOverviewComponent} from "../../../UI/src/app/team/team-overview.component";
+import {TrackOverviewComponent} from "../../../UI/src/app/track/track-overview.component";
 
 const routes: Routes = [
   {
