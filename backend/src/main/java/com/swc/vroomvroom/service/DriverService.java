@@ -1,12 +1,11 @@
 package main.java.com.swc.vroomvroom.service;
 
-import main.java.com.swc.vroomvroom.model.Driver;
+import main.java.com.swc.vroomvroom.entity.Driver;
 import main.java.com.swc.vroomvroom.repository.DriverRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class DriverService {
@@ -33,7 +32,7 @@ public class DriverService {
     public Driver updateDriver(Driver driver) {
         Driver old = getDriverById(driver.getDriverId());
         if (old != null) {
-            old.setName(driver.getName());
+            old.setFirstName(driver.getFirstName());
             old.setTeam(driver.getTeam());
             driverRepository.save(old);
         }
@@ -43,8 +42,7 @@ public class DriverService {
         return old;
     }
 
-    public String deleteDriverById(int id) {
+    public void deleteDriverById(int id) {
         driverRepository.deleteById(id);
-        return "Driver got deleted";
     }
 }

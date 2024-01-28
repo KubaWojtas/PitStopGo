@@ -5,10 +5,14 @@ import {TrackService} from "../service/track.service";
 @Component({
   selector: 'swc-track-overview',
   template: `
-    <swc-add-track-form (trackForm)="addTrack($event)"></swc-add-track-form>
-    <div class="flex justify-content-evenly flex-wrap ">
+      <p-button type="button" class="mr-2" (click)="sidebarVisible = true" icon="pi pi-arrow-left"></p-button>
+      <p-sidebar [(visible)]="sidebarVisible" position="right">
+        <H1>Add Track</H1>
+        <swc-add-track-form (trackForm)="addTrack($event)"></swc-add-track-form>
+      </p-sidebar>
+      <div class="flex justify-content-evenly flex-wrap ">
           <swc-track-card *ngFor="let track of tracks"
-                          [track] = track
+                          [track]=track
                           (deleteTrack)="deleteTrack($event)"
           ></swc-track-card>
       </div>
@@ -17,6 +21,8 @@ import {TrackService} from "../service/track.service";
 export class TrackOverviewComponent implements OnInit {
 
   tracks: Track[] = [];
+
+  sidebarVisible: boolean = false;
 
   constructor(private service: TrackService) {
   }

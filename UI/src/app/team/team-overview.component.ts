@@ -5,7 +5,11 @@ import {TeamService} from "../service/team.service";
 @Component({
   selector: 'swc-team-overview',
   template: `
-    <swc-add-team-form (teamForm)="addTeam($event)"></swc-add-team-form>
+      <p-button type="button" class="mr-2" (click)="sidebarVisible = true" icon="pi pi-arrow-left"></p-button>
+      <p-sidebar [(visible)]="sidebarVisible" position="right">
+          <H1>Add Team</H1>
+          <swc-add-team-form (teamForm)="addTeam($event)"></swc-add-team-form>
+      </p-sidebar>
       <div class="flex justify-content-evenly flex-wrap ">
           <swc-team-card *ngFor="let team of teams"
                          [team]="team"
@@ -17,6 +21,8 @@ import {TeamService} from "../service/team.service";
 export class TeamOverviewComponent implements OnInit{
 
   teams: Team[] = []
+
+  sidebarVisible: boolean = false;
 
   constructor(private service: TeamService) {
   }

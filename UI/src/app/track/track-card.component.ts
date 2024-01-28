@@ -7,7 +7,7 @@ import {Track} from "../team/model/team.model";
     <div>
       <p-card class="card" header="{{track.name}}" [style]="{ width: '285px' }">
         <ng-template pTemplate="header" class="card-img-top">
-          <img alt="Card" src="../assets/track/{{track.name}}.png"/>
+          <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />
         </ng-template>
         <p-button label="Delete" (onClick)="delete()"></p-button>
       </p-card>

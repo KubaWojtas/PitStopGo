@@ -1,13 +1,11 @@
 package main.java.com.swc.vroomvroom.service;
 
-import main.java.com.swc.vroomvroom.model.Team;
-import main.java.com.swc.vroomvroom.model.Track;
+import main.java.com.swc.vroomvroom.entity.Track;
 import main.java.com.swc.vroomvroom.repository.TrackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class TrackService {
@@ -43,8 +41,7 @@ public class TrackService {
         return old;
     }
 
-    public String deleteTrackById(int id) {
+    public void deleteTrackById(int id) {
         trackRepository.deleteById(id);
-        return "Track got deleted";
     }
 }

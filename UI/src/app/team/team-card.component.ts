@@ -7,7 +7,7 @@ import {Team} from "../track/model/track.model";
     <div>
       <p-card class="card" header="{{team.name}}" [style]="{ width: '285px' }">
         <ng-template pTemplate="header" class="card-img-top">
-          <img alt="Card" src="../assets/team/{{team.name}}.png"/>
+          <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />
         </ng-template>
         <span>Norris</span>
         <br>

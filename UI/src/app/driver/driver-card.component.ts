@@ -7,7 +7,7 @@ import {Driver} from "./model/driver.model";
     <div>
       <p-card class="card" header="{{driver.name}}" subheader="{{driver.team}}" [style]="{ width: '285px' }">
         <ng-template pTemplate="header" class="card-img-top">
-          <img alt="Card" src="../assets/driver/{{driver.name}}.png"/>
+          <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />
         </ng-template>
         <p-button label="Delete" (onClick)="delete()"></p-button>
       </p-card>
