@@ -12,7 +12,7 @@ import java.util.Set;
 public class Team {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int teamId;
     private String name;
     private String country;

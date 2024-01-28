@@ -35,14 +35,14 @@ public class CalendarController {
         return service.createCalender(calendar);
     }
 
-    @PostMapping("/{id}/addTrack/{trackId}")
-    public Calendar addTrack(@PathVariable("id") int id, @PathVariable("trackId") int trackId) {
-        return service.addTrack(id, trackId);
+    @PostMapping("/{id}/addRace/{raceId}")
+    public Calendar addRace(@PathVariable("id") int id, @PathVariable("raceId") int raceId) {
+        return service.addRace(id, raceId);
     }
 
-    @PostMapping("/{id}/removeTrack/{trackId}")
-    public Calendar removeTrack(@PathVariable("id") int id, @PathVariable("trackId") int trackId) {
-        return service.removeTrack(id, trackId);
+    @PostMapping("/{id}/removeRace/{raceId}")
+    public Calendar removeRace(@PathVariable("id") int id, @PathVariable("raceId") int raceId) {
+        return service.removeRace(id, raceId);
     }
 
     @PutMapping("/update")

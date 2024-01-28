@@ -2,6 +2,7 @@ package main.java.com.swc.vroomvroom.service;
 
 import jakarta.transaction.Transactional;
 import main.java.com.swc.vroomvroom.entity.Calendar;
+import main.java.com.swc.vroomvroom.entity.Race;
 import main.java.com.swc.vroomvroom.entity.Track;
 import main.java.com.swc.vroomvroom.repository.CalendarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class CalendarService {
     @Autowired
     private CalendarRepository calendarRepository;
     @Autowired
-    private TrackService trackService;
+    private RaceService raceService;
 
     public Calendar getCalendarById(int id) {
         return calendarRepository.findById(id).orElse(null);
@@ -36,10 +37,18 @@ public class CalendarService {
     }
 
     @Transactional
-    public Calendar addTrack(int calenderId, int trackId) {
+    public Calendar addRace(int calenderId, int raceId) {
         Calendar calendar = getCalendarById(calenderId);
-        Track track = trackService.getTrackById(trackId);
-        calendar.addTrack(track);
+        Race race = raceService.getRaceById(raceId);
+        calendar.addRace(race);
+        return calendar;
+    }
+
+    @Transactional
+    public Calendar removeRace(int calenderId, int raceId) {
+        Calendar calendar = getCalendarById(calenderId);
+        Race race = raceService.getRaceById(raceId);
+        calendar.removeRace(race);
         return calendar;
     }
 
@@ -47,7 +56,6 @@ public class CalendarService {
         Calendar old = getCalendarById(calendar.getCalendarId());
         if (old != null) {
             old.setName(calendar.getName());
-            old.setTracks(calendar.getTracks());
             calendarRepository.save(old);
         }
         else {
@@ -58,13 +66,5 @@ public class CalendarService {
 
     public void deleteCalendarById(int id) {
         calendarRepository.deleteById(id);
-    }
-
-    @Transactional
-    public Calendar removeTrack(int calenderId, int trackId) {
-        Calendar calendar = getCalendarById(calenderId);
-        Track track = trackService.getTrackById(trackId);
-        calendar.removeTrack(track);
-        return calendar;
     }
 }

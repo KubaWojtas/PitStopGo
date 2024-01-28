@@ -12,7 +12,7 @@ import java.time.LocalDate;
 public class Driver {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int driverId;
     private String firstName;
     private String lastName;

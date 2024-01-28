@@ -14,19 +14,19 @@ import java.util.Set;
 public class Calendar {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int calendarId;
     private String name;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Track> tracks = new HashSet<>();
+    private Set<Race> races = new HashSet<>();
 
-    public void addTrack(Track track) {
-        tracks.add(track);
+    public void addRace(Race race) {
+        races.add(race);
     }
 
-    public void removeTrack(Track track) {
-        tracks.remove(track);
+    public void removeRace(Race race) {
+        races.remove(race);
     }
 
 //    public Set<raceCalendar> generateRaceCalendar() {
