@@ -22,4 +22,11 @@ public class Track {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Race> races = new HashSet<>();
 
+    public void addRace(Race race) {
+        races.add(race);
+    }
+
+    public void removeRace(Race race) {
+        races.remove(race);
+    }
 }

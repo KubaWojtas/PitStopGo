@@ -25,10 +25,10 @@ public class CalendarController {
         return service.getAllCalendars();
     }
 
-//    @GetMapping("/{id}/generate")
-//    public Calendar generateRaceCalendar(@PathVariable("id") int id) {
-//        return service.generateRaceCalendar(id);
-//    }
+    @GetMapping("/{id}/generate")
+    public Calendar generateRaceCalendar(@PathVariable("id") int id) {
+        return service.generateRaceCalendar(id);
+    }
 
     @PostMapping("/add")
     public Calendar addCalender(@RequestBody Calendar calendar) {
@@ -40,10 +40,10 @@ public class CalendarController {
         return service.addRace(id, raceId);
     }
 
-    @PostMapping("/{id}/removeRace/{raceId}")
-    public Calendar removeRace(@PathVariable("id") int id, @PathVariable("raceId") int raceId) {
-        return service.removeRace(id, raceId);
-    }
+//    @PostMapping("/{id}/removeRace/{raceId}")
+//    public Calendar removeRace(@PathVariable("id") int id, @PathVariable("raceId") int raceId) {
+//        return service.removeRace(id, raceId);
+//    }
 
     @PutMapping("/update")
     public Calendar updateCalendar(@RequestBody Calendar calendar) {

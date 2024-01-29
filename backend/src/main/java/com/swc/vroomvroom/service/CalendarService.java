@@ -16,6 +16,8 @@ public class CalendarService {
     @Autowired
     private CalendarRepository calendarRepository;
     @Autowired
+    private TrackService trackService;
+    @Autowired
     private RaceService raceService;
 
     public Calendar getCalendarById(int id) {
@@ -26,31 +28,36 @@ public class CalendarService {
         return (List<Calendar>) calendarRepository.findAll();
     }
 
-//    public Calendar generateRaceCalendar(int id) {
-//        Calendar calendar = getCalendarById(id);
-//        calendar.generateRaceCalendar();
-//        return calendar;
-//    }
+    public Calendar generateRaceCalendar(int id) {
+        Calendar calendar = getCalendarById(id);
+        calendar.generateRaceCalendar();
+        return calendar;
+    }
 
     public Calendar createCalender(Calendar calendar) {
         return calendarRepository.save(calendar);
     }
 
     @Transactional
-    public Calendar addRace(int calenderId, int raceId) {
+    public Calendar addRace(int calenderId, int trackId) {
         Calendar calendar = getCalendarById(calenderId);
-        Race race = raceService.getRaceById(raceId);
+        Track track = trackService.getTrackById(trackId);
+        Race race = new Race();
+        race.setCalendarId(calenderId);
+        race.setTrackId(trackId);
+        raceService.createRace(race);
         calendar.addRace(race);
+        track.addRace(race);
         return calendar;
     }
 
-    @Transactional
-    public Calendar removeRace(int calenderId, int raceId) {
-        Calendar calendar = getCalendarById(calenderId);
-        Race race = raceService.getRaceById(raceId);
-        calendar.removeRace(race);
-        return calendar;
-    }
+//    @Transactional
+//    public Calendar removeRace(int calenderId, int trackId) {
+//        Calendar calendar = getCalendarById(calenderId);
+//        Race race = raceService.getRaceById(raceId);
+//        calendar.removeRace(race);
+//        return calendar;
+//    }
 
     public Calendar updateCalendar(Calendar calendar) {
         Calendar old = getCalendarById(calendar.getCalendarId());

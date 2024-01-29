@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Data
 @Entity
@@ -29,29 +30,14 @@ public class Calendar {
         races.remove(race);
     }
 
-//    public Set<raceCalendar> generateRaceCalendar() {
-//        Set<raceCalendar> raceCalendar = new HashSet<>();
-//        LocalDate dateOfStart = LocalDate.of(2024, 3, 2);
-//        LocalDate dateOfRace = dateOfStart;
-//
-//        for (Track track: tracks) {
-//            int random = new Random().nextInt(3) + 1;
-//            dateOfRace = dateOfRace.plusWeeks(random);
-//            raceCalendar.add(mapCalendarTrack(track, dateOfStart));
-//        }
-//
-//        return raceCalendar;
-//    }
-//
-//    private raceCalendar mapCalendarTrack(Track track, LocalDate dateOfRace) {
-//        raceCalendar calendarTrack = new raceCalendar();
-//
-//        calendarTrack.setCalendarId(this.getCalendarId());
-//        calendarTrack.setTrackId(track.getTrackId());
-//        calendarTrack.setDateOfRace(dateOfRace);
-//
-//        return calendarTrack;
-//    }
+    public void generateRaceCalendar() {
+        LocalDate dateOfStart = LocalDate.of(2024, 3, 2);
+        ThreadLocalRandom random = ThreadLocalRandom.current();
 
-
+        for (Race race : races) {
+            race.setDateOfRace(dateOfStart);
+            int randomWeeks = random.nextInt(1, 4);
+            dateOfStart = dateOfStart.plusWeeks(randomWeeks);
+        }
+    }
 }
