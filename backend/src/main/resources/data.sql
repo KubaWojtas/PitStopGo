@@ -1,1 +1,32 @@
-INSERT INTO DRIVER (driverId, name, team) VALUES (1, 'Norris', 'McLaren' )
+INSERT INTO DRIVER (first_name, last_name, birthdate, country, number, team_Id) values ( 'Max', 'Verstappen', '1997-09-30', 'Netherlands', '1', '1' );
+INSERT INTO DRIVER (first_name, last_name, birthdate, country, number, team_Id) values ( 'Sergio', 'Perez', '1990-01-26', 'Mexico', '11', '1' );
+INSERT INTO DRIVER (first_name, last_name, birthdate, country, number, team_Id) values ( 'George', 'Russel', '1998-02-15', 'United Kingdom', '63', '2' );
+INSERT INTO DRIVER (first_name, last_name, birthdate, country, number, team_Id) values ( 'Lewis', 'Hamilton', '1985-01-07', 'United Kingdom', '44', '2' );
+INSERT INTO DRIVER (first_name, last_name, birthdate, country, number, team_Id) values ( 'Charles', 'Leclerc', '1997-10-16', 'Monaco', '16', '3' );
+INSERT INTO DRIVER (first_name, last_name, birthdate, country, number, team_Id) values ( 'Carlos', 'Sainz', '1994-09-01', 'Spain', '55', '3' );
+INSERT INTO DRIVER (first_name, last_name, birthdate, country, number, team_Id) values ( 'Oscar', 'Piastri', '2001-04-06', 'Australia', '81', '4' );
+INSERT INTO DRIVER (first_name, last_name, birthdate, country, number, team_Id) values ( 'Lando', 'Norris', '1999-11-13', 'United Kingdom', '4', '4' );
+INSERT INTO DRIVER (first_name, last_name, birthdate, country, number, team_Id) values ( 'Lance', 'Stroll', '1998-10-29', 'Canada', '18', '5' );
+INSERT INTO DRIVER (first_name, last_name, birthdate, country, number, team_Id) values ( 'Fernando', 'Alonso', '1981-07-29', 'Spain', '14', '5' );
+INSERT INTO DRIVER (first_name, last_name, birthdate, country, number, team_Id) values ( 'Esteban', 'Ocon', '1996-09-17', 'France', '31', '6' );
+INSERT INTO DRIVER (first_name, last_name, birthdate, country, number, team_Id) values ( 'Pierre', 'Gasly', '1996-02-07', 'France', '10', '6' );
+INSERT INTO DRIVER (first_name, last_name, birthdate, country, number, team_Id) values ( 'Alexander', 'Albon', '1996-03-23', 'Thailand', '23', '7' );
+INSERT INTO DRIVER (first_name, last_name, birthdate, country, number, team_Id) values ( 'Logan', 'Sargeant', '2000-12-31', 'United States', '2', '7' );
+INSERT INTO DRIVER (first_name, last_name, birthdate, country, number, team_Id) values ( 'Daniel', 'Ricciardo', '1989-07-01', 'Australia', '03', '8' );
+INSERT INTO DRIVER (first_name, last_name, birthdate, country, number, team_Id) values ( 'Yuki', 'Tsunoda', '2000-05-11', 'Japan', '22', '8' );
+INSERT INTO DRIVER (first_name, last_name, birthdate, country, number, team_Id) values ( 'Valtteri', 'Bottas', '1989-08-28', 'Finland', '77', '9' );
+INSERT INTO DRIVER (first_name, last_name, birthdate, country, number, team_Id) values ( 'Zhou', 'Guanyu', '1999-05-30', 'China', '24', '9' );
+INSERT INTO DRIVER (first_name, last_name, birthdate, country, number, team_Id) values ( 'Kevin', 'Magnussen', '1992-10-05', 'Denmark', '20', '10' );
+INSERT INTO DRIVER (first_name, last_name, birthdate, country, number, team_Id) values ( 'Nico', 'Hulkenberg', '1987-08-19', 'Germany', '27', '10' );
+
+
+INSERT INTO TEAM (name, country) values ('Red Bull Racing', 'Austria' );
+INSERT INTO TEAM (name, country) values ('Mercedes', 'Germany' );
+INSERT INTO TEAM (name, country) values ('Ferrari', 'Italy' );
+INSERT INTO TEAM (name, country) values ('McLaren', 'United Kingdom' );
+INSERT INTO TEAM (name, country) values ('Aston Martin', 'United Kingdom' );
+INSERT INTO TEAM (name, country) values ('Alpine', 'France' );
+INSERT INTO TEAM (name, country) values ('Williams', 'United Kingdom' );
+INSERT INTO TEAM (name, country) values ('Torro Rosso', 'Italy' );
+INSERT INTO TEAM (name, country) values ('Kick Sauber', 'Switzerland' );
+INSERT INTO TEAM (name, country) values ('Haas', 'United States' );

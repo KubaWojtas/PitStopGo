@@ -1,5 +1,0 @@
-CREATE TABLE DRIVER (
-    driverId   int PRIMARY KEY,
-    name VARCHAR(64) NOT NULL,
-    team VARCHAR(64) NOT NULL
-);

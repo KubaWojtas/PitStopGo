@@ -18,6 +18,7 @@ public class Driver {
     private String lastName;
     private LocalDate birthdate;
     private String country;
-    private String team;
+    private String number;
+    private int teamId;
 
 }

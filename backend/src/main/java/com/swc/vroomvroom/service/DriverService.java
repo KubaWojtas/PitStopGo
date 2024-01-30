@@ -33,7 +33,6 @@ public class DriverService {
         Driver old = getDriverById(driver.getDriverId());
         if (old != null) {
             old.setFirstName(driver.getFirstName());
-            old.setTeam(driver.getTeam());
             driverRepository.save(old);
         }
         else {

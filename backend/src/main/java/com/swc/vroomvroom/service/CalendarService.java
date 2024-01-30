@@ -31,7 +31,7 @@ public class CalendarService {
     public Calendar generateRaceCalendar(int id) {
         Calendar calendar = getCalendarById(id);
         calendar.generateRaceCalendar();
-        return calendar;
+        return calendarRepository.save(calendar);
     }
 
     public Calendar createCalender(Calendar calendar) {
