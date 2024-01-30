@@ -19,7 +19,7 @@ public class Track {
     private String distance;
     private int laps;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "trackId")
     private Set<Race> races = new HashSet<>();
 
     public void addRace(Race race) {

@@ -17,7 +17,7 @@ public class Team {
     private String name;
     private String country;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "teamId")
     private Set<Driver> drivers = new HashSet<>();
 
     public void addDriver(Driver driver) {

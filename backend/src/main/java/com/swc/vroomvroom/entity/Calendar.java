@@ -19,7 +19,7 @@ public class Calendar {
     private int calendarId;
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "calendarId")
     private Set<Race> races = new HashSet<>();
 
     public void addRace(Race race) {
