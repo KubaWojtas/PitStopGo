@@ -2,6 +2,7 @@ package main.java.com.swc.vroomvroom.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import main.java.com.swc.vroomvroom.domain.TrackType;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,9 +16,9 @@ public class Track {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int trackId;
     private String name;
+    private String location;
     private String country;
-    private String distance;
-    private int laps;
+    private double distance;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "trackId")
     private Set<Race> races = new HashSet<>();

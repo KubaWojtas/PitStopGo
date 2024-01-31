@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class CalendarService {
@@ -30,6 +31,14 @@ public class CalendarService {
 
     public Calendar generateRaceCalendar(int id) {
         Calendar calendar = getCalendarById(id);
+        if (calendar.getRaces().isEmpty()) {
+            List<Track> tracks = trackService.getAllTracks();
+            for (Track track: tracks) {
+                Race race = new Race();
+                race.setTrackId(track.getTrackId());
+                calendar.addRace(race);
+            }
+        }
         calendar.generateRaceCalendar();
         return calendarRepository.save(calendar);
     }
