@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Track} from "../team/model/team.model";
 import {TrackService} from "../service/track.service";
+import {Track} from "./model/track.model";
 
 @Component({
   selector: 'swc-track-overview',

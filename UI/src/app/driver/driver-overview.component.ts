@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Driver} from "./model/driver.model";
 import {DriverService} from "../service/driver.service";
+import {TeamService} from "../service/team.service";
+import {Track} from "../track/model/track.model";
+import {Team} from "../team/model/team.model";
 
 @Component({
   selector: 'swc-driver-overview',
@@ -14,6 +17,7 @@ import {DriverService} from "../service/driver.service";
       <swc-driver-card *ngFor="let driver of drivers"
                        [driver]="driver"
                        (deleteDriver)="deleteDriver($event)"
+                       [team]="getDriverTeam(driver)"
       ></swc-driver-card>
     </div>
   `
@@ -21,14 +25,17 @@ import {DriverService} from "../service/driver.service";
 export class DriverOverviewComponent implements OnInit {
 
   drivers: Driver[] = [];
+  teams: Team[] = [];
 
   sidebarVisible: boolean = false;
 
-  constructor(private service: DriverService) {
+  constructor(private service: DriverService,
+              private teamService: TeamService) {
   }
 
   ngOnInit() {
     this.retrieveDrivers();
+    this.getTeams();
   }
 
   retrieveDrivers() {
@@ -54,5 +61,24 @@ export class DriverOverviewComponent implements OnInit {
     console.log(data)
     this.service.delete(data)
       .subscribe(() => this.ngOnInit())
+  }
+
+
+  getTeams() {
+    this.teamService.getAll()
+      .subscribe(data => {
+        this.teams = data;
+        console.log(data)
+      })
+  }
+
+  getDriverTeam(driver : Driver) {
+    let t;
+    for (let team of this.teams) {
+      if (driver.teamId == team.teamId!.toString()) {
+        t = team;
+      }
+    }
+    return t!
   }
 }

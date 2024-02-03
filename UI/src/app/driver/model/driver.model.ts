@@ -5,5 +5,5 @@ export class Driver {
     dateOfBirth?: Date;
     country?: string;
     number?: string;
-    team?: string;
+    teamId?: string;
 }

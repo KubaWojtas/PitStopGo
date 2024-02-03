@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Team} from "../track/model/track.model";
+import {Track} from "../track/model/track.model";
+import {Team} from "./model/team.model";
 
 @Component({
   selector: 'swc-team-card',
@@ -9,9 +10,10 @@ import {Team} from "../track/model/track.model";
         <ng-template pTemplate="header" class="card-img-top">
           <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />
         </ng-template>
-        <span>Norris</span>
-        <br>
-        <span>Norris</span>
+        <div *ngFor="let driver of team.drivers">
+          <span>{{driver}}</span>
+          <br>
+        </div>
         <p-button label="Delete" (onClick)="delete()"></p-button>
       </p-card>
     </div>
@@ -25,7 +27,6 @@ export class TeamCardComponent {
   deleteDriver = new EventEmitter<any>();
 
   delete() {
-    console.log(this.team.teamId)
     this.deleteDriver.emit(this.team.teamId)
   }
 }

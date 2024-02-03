@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Team} from "../track/model/track.model";
+import {Track} from "../track/model/track.model";
 import {TeamService} from "../service/team.service";
+import {Team} from "./model/team.model";
 
 @Component({
   selector: 'swc-team-overview',

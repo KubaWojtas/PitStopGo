@@ -1,5 +1,6 @@
-export class Track {
-    trackId?: bigint;
+export class Team {
+    teamId?: bigint;
     name?: string;
     country?: string;
+    drivers?: [];
 }

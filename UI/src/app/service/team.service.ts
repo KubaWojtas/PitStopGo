@@ -1,9 +1,7 @@
 import {Observable} from "rxjs";
-import {Driver} from "../driver/model/driver.model";
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {Track} from "../team/model/team.model";
-import {Team} from "../track/model/track.model";
+import {Team} from "../team/model/team.model";
 
 const baseUrl =  'http://localhost:8080/api/teams';
 

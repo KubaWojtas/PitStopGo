@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Track} from "../team/model/team.model";
+import {Track} from "./model/track.model";
 
 @Component({
   selector: 'swc-track-card',
