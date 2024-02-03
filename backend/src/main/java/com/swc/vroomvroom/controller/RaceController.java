@@ -27,6 +27,11 @@ public class RaceController {
         return service.getAllRaces();
     }
 
+    @GetMapping("/{id}/simulate")
+    public void simulateRace(@PathVariable("id") int id) {
+        service.simulateRace(id);
+    }
+
     @PostMapping("/add")
     public Race addRace(@RequestBody Race race) {
         return service.createRace(race);

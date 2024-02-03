@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -20,5 +22,14 @@ public class Driver {
     private String country;
     private String number;
     private int teamId;
+    private int winChangeMin;
+    private int winChangeMax;
+
+    @OneToMany(mappedBy = "driver")
+    private Set<RaceStanding> standings;
+
+    public void addStandings(RaceStanding raceStanding) {
+        standings.add(raceStanding);
+    }
 
 }
