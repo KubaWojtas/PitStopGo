@@ -62,7 +62,6 @@ public class RaceService {
         }
         SeasonResultsDto seasonResultsDto = new SeasonResultsDto();
         seasonResultsDto.createSeasonResults(standings);
-        seasonResultsDto.sortStanding();
         return seasonResultsDto;
     }
 
