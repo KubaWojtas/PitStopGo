@@ -1,16 +1,15 @@
 package main.java.com.swc.vroomvroom.service;
 
-import jakarta.transaction.Transactional;
+import main.java.com.swc.vroomvroom.dto.RaceStandingDto;
+import main.java.com.swc.vroomvroom.dto.SeasonResultsDto;
 import main.java.com.swc.vroomvroom.entity.Driver;
 import main.java.com.swc.vroomvroom.entity.Race;
 import main.java.com.swc.vroomvroom.entity.RaceStanding;
-import main.java.com.swc.vroomvroom.entity.Team;
 import main.java.com.swc.vroomvroom.repository.RaceRepository;
-import main.java.com.swc.vroomvroom.repository.RaceStandingRepository;
-import main.java.com.swc.vroomvroom.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -32,7 +31,7 @@ public class RaceService {
         return (List<Race>) raceRepository.findAll();
     }
 
-    public void simulateRace(int raceId) {
+    public RaceStandingDto simulateRace(int raceId) {
         Race race = getRaceById(raceId);
         Map<Integer, Integer> standings = race.simulateRace(driverService.getAllDrivers());
         int[] pointsArray = {25, 18, 15, 12, 10, 8, 6, 4, 2, 1};
@@ -51,6 +50,20 @@ public class RaceService {
             position++;
             pointsIndex++;
         }
+
+        return raceStandingService.getRaceStandingById(raceId);
+    }
+
+    public SeasonResultsDto simulateAllRaces() {
+        List<Race> races = getAllRaces();
+        List<RaceStandingDto> standings= new ArrayList<>();
+        for (Race race: races) {
+            standings.add(simulateRace(race.getRaceId()));
+        }
+        SeasonResultsDto seasonResultsDto = new SeasonResultsDto();
+        seasonResultsDto.createSeasonResults(standings);
+        seasonResultsDto.sortStanding();
+        return seasonResultsDto;
     }
 
     public Race createRace(Race race) {

@@ -1,11 +1,8 @@
 package main.java.com.swc.vroomvroom.service;
 
-import jakarta.transaction.Transactional;
-import main.java.com.swc.vroomvroom.entity.Race;
+import main.java.com.swc.vroomvroom.dto.RaceStandingDto;
 import main.java.com.swc.vroomvroom.entity.RaceStanding;
-import main.java.com.swc.vroomvroom.entity.Track;
 import main.java.com.swc.vroomvroom.repository.RaceStandingRepository;
-import main.java.com.swc.vroomvroom.repository.TrackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +14,19 @@ public class RaceStandingService {
     @Autowired
     private RaceStandingRepository raceStandingRepository;
 
-    public RaceStanding createRaceStanding(RaceStanding raceStanding) {
-        return raceStandingRepository.save(raceStanding);
+    public RaceStandingDto getRaceStandingById(int id) {
+        List<RaceStanding> raceStandings = (List<RaceStanding>) raceStandingRepository.findAll();
+        RaceStandingDto result = new RaceStandingDto();
+        for (RaceStanding r : raceStandings) {
+            if (r.getRace().getRaceId() == id) {
+                result.getResultaten().put(r.getDriver().getLastName(), r.getPoints());
+            }
+        }
+        result.sortStanding();
+        return result;
+    }
+
+    public void createRaceStanding(RaceStanding raceStanding) {
+        raceStandingRepository.save(raceStanding);
     }
 }
