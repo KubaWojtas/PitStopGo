@@ -10,12 +10,10 @@ import main.java.com.swc.vroomvroom.repository.RaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static java.lang.String.valueOf;
 
@@ -30,6 +28,8 @@ public class RaceService {
     private RaceStandingService raceStandingService;
     @Autowired
     private TrackService trackService;
+
+    private int randomTimeOffset;
 
     public Race getRaceById(int id) {
         return raceRepository.findById(id).orElse(null);
@@ -55,7 +55,7 @@ public class RaceService {
             }
             raceStanding.setPosition(valueOf(position));
             Track track = trackService.getTrackById(race.getTrackId());
-            raceStanding.setTime(generateLapTime(track, position));
+            raceStanding.setTime(generateRaceTime(track, position));
             raceStandingService.createRaceStanding(raceStanding);
             position++;
             pointsIndex++;
@@ -64,16 +64,25 @@ public class RaceService {
         return raceStandingService.getRaceStandingById(raceId);
     }
 
-    private String generateLapTime(Track track, int offset) {
-        String s = "";
-        float time = track.getLapRecord() * (100 + offset) / 100;
-        if (time > 60) {
-            s += "1:";
-            time = time - 60;
-            String t = valueOf(time);
-            s += t.substring(0,2) + "." + t.substring(3,6);
+    private String generateRaceTime(Track track, int offset) {
+        ThreadLocalRandom random = ThreadLocalRandom.current();
+        int randomTimeOffset = random.nextInt(1, 4);
+
+        if (offset != 1) {
+            randomTimeOffset += randomTimeOffset;
         }
-        return s;
+
+        float time = track.getLapRecord() * (100 + randomTimeOffset) / 100;
+        return calcTime(time * track.getLaps());
+    }
+
+    private String calcTime(float time) {
+        int hours = (int) (time / 3600);
+        int minutes = (int) ((time % 3600) / 60);
+        int seconds = (int) (time % 60);
+        int millis = (int) ((time - (int)time) * 1000);
+
+        return String.format("%02d:%02d:%02d.%03d", hours, minutes, seconds, millis);
     }
 
     public SeasonResultsDto simulateAllRaces() {

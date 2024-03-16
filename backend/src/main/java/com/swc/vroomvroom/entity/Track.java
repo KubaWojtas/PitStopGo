@@ -31,4 +31,8 @@ public class Track {
     public void removeRace(Race race) {
         races.remove(race);
     }
+
+    public int getLaps() {
+        return (int) Math.ceil(305/distance) + 1;
+    }
 }
