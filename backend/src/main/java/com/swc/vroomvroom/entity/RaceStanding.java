@@ -24,6 +24,7 @@ public class RaceStanding {
 
     private String position;
     private int points;
+    private String time;
 
     public RaceStanding(Driver driver, Race race) {
         this.id = new RaceStandingKey(driver.getDriverId(), race.getRaceId());

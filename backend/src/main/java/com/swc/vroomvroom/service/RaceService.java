@@ -5,13 +5,19 @@ import main.java.com.swc.vroomvroom.dto.SeasonResultsDto;
 import main.java.com.swc.vroomvroom.entity.Driver;
 import main.java.com.swc.vroomvroom.entity.Race;
 import main.java.com.swc.vroomvroom.entity.RaceStanding;
+import main.java.com.swc.vroomvroom.entity.Track;
 import main.java.com.swc.vroomvroom.repository.RaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+
+import static java.lang.String.valueOf;
 
 @Service
 public class RaceService {
@@ -22,6 +28,8 @@ public class RaceService {
     private DriverService driverService;
     @Autowired
     private RaceStandingService raceStandingService;
+    @Autowired
+    private TrackService trackService;
 
     public Race getRaceById(int id) {
         return raceRepository.findById(id).orElse(null);
@@ -45,13 +53,27 @@ public class RaceService {
             } else {
                 raceStanding.setPoints(pointsArray[pointsIndex]);
             }
-            raceStanding.setPosition(String.valueOf(position));
+            raceStanding.setPosition(valueOf(position));
+            Track track = trackService.getTrackById(race.getTrackId());
+            raceStanding.setTime(generateLapTime(track, position));
             raceStandingService.createRaceStanding(raceStanding);
             position++;
             pointsIndex++;
         }
 
         return raceStandingService.getRaceStandingById(raceId);
+    }
+
+    private String generateLapTime(Track track, int offset) {
+        String s = "";
+        float time = track.getLapRecord() * (100 + offset) / 100;
+        if (time > 60) {
+            s += "1:";
+            time = time - 60;
+            String t = valueOf(time);
+            s += t.substring(0,2) + "." + t.substring(3,6);
+        }
+        return s;
     }
 
     public SeasonResultsDto simulateAllRaces() {

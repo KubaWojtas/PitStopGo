@@ -19,6 +19,7 @@ public class Track {
     private String location;
     private String country;
     private double distance;
+    private float lapRecord;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "trackId")
     private Set<Race> races = new HashSet<>();

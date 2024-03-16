@@ -25,6 +25,7 @@ public class RaceStandingService {
                 driverStandingDto.setPosition(Integer.parseInt(r.getPosition()));
                 driverStandingDto.setDriverName(r.getDriver().getLastName());
                 driverStandingDto.setPoints(r.getPoints());
+                driverStandingDto.setTime(r.getTime());
                 resultaten.add(driverStandingDto);
             }
         }
