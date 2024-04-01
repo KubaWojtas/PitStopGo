@@ -24,6 +24,10 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {DriverService} from "./service/driver.service";
 import {TeamService} from "./service/team.service";
 import {TrackService} from "./service/track.service";
+import {CalendarOverviewComponent} from "./calendar/calender-overview.component";
+import {CalendarService} from "./service/calendar.service";
+import {RaceService} from "./service/race.service";
+import {TableModule} from "primeng/table";
 
 @NgModule({
   declarations: [
@@ -49,6 +53,7 @@ import {TrackService} from "./service/track.service";
     AddTrackFormComponent,
 
     //Calendar
+    CalendarOverviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,12 +65,15 @@ import {TrackService} from "./service/track.service";
     ReactiveFormsModule,
     ChipsModule,
     SidebarModule,
+    TableModule,
   ],
   providers: [
     HttpClient,
     DriverService,
     TeamService,
-    TrackService
+    TrackService,
+    CalendarService,
+    RaceService
   ],
   bootstrap: [AppComponent]
 })
