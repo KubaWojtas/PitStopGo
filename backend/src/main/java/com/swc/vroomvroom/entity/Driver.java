@@ -1,21 +1,18 @@
 package main.java.com.swc.vroomvroom.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
 
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "DRIVER")
 public class Driver {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int driverId;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID driverId;
     private String firstName;
     private String lastName;
     private LocalDate birthdate;
@@ -41,7 +38,7 @@ public class Driver {
         standings = builder.standings;
     }
 
-    public int getDriverId() {
+    public UUID getDriverId() {
         return driverId;
     }
 
@@ -86,7 +83,7 @@ public class Driver {
     }
 
     public static final class Builder {
-        private int driverId;
+        private UUID driverId;
         private String firstName;
         private String lastName;
         private LocalDate birthdate;
@@ -97,7 +94,7 @@ public class Driver {
         private int winChangeMax;
         private Set<RaceStanding> standings;
 
-        public Builder withDriverId(int driverId) {
+        public Builder withDriverId(UUID driverId) {
             this.driverId = driverId;
             return this;
         }

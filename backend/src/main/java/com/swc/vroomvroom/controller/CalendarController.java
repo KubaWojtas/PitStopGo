@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @CrossOrigin()
@@ -16,7 +17,7 @@ public class CalendarController {
     private CalendarService service;
 
     @GetMapping("/{id}")
-    public Calendar findById(@PathVariable("id") int id) {
+    public Calendar findById(@PathVariable("id") UUID id) {
         return service.getCalendarById(id);
     }
 
@@ -26,7 +27,7 @@ public class CalendarController {
     }
 
     @GetMapping("/{id}/generate")
-    public Calendar generateRaceCalendar(@PathVariable("id") int id) {
+    public Calendar generateRaceCalendar(@PathVariable("id") UUID id) {
         return service.generateRaceCalendar(id);
     }
 
@@ -36,12 +37,12 @@ public class CalendarController {
     }
 
     @PostMapping("/{id}/addRace/{raceId}")
-    public Calendar addRace(@PathVariable("id") int id, @PathVariable("raceId") int raceId) {
+    public Calendar addRace(@PathVariable("id") UUID id, @PathVariable("raceId") UUID raceId) {
         return service.addRace(id, raceId);
     }
 
 //    @PostMapping("/{id}/removeRace/{raceId}")
-//    public Calendar removeRace(@PathVariable("id") int id, @PathVariable("raceId") int raceId) {
+//    public Calendar removeRace(@PathVariable("id") UUID id, @PathVariable("raceId") UUID raceId) {
 //        return service.removeRace(id, raceId);
 //    }
 
@@ -51,7 +52,7 @@ public class CalendarController {
     }
 
     @DeleteMapping("/{id}/delete")
-    public void deleteById(@PathVariable("id") int id) {
+    public void deleteById(@PathVariable("id") UUID id) {
         service.deleteCalendarById(id);
     }
 }

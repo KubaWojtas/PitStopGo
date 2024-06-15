@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class RaceStandingService {
@@ -15,7 +16,7 @@ public class RaceStandingService {
     @Autowired
     private RaceStandingRepository raceStandingRepository;
 
-    public RaceStandingDto getRaceStandingById(int id) {
+    public RaceStandingDto getRaceStandingById(UUID id) {
         List<RaceStanding> raceStandings = (List<RaceStanding>) raceStandingRepository.findAll();
         RaceStandingDto result = new RaceStandingDto();
         List<DriverStandingDto> resultaten = result.getResultaten();

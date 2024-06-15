@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class TeamService {
@@ -19,7 +20,7 @@ public class TeamService {
     @Autowired
     private DriverService driverService;
 
-    public Team getTeamById(int id) {
+    public Team getTeamById(UUID id) {
         return teamRepository.findById(id).orElse(null);
     }
 
@@ -36,7 +37,7 @@ public class TeamService {
     }
 
     @Transactional
-    public Team addDriver(int teamId, int driverId) {
+    public Team addDriver(UUID teamId, UUID driverId) {
         Team team = getTeamById(teamId);
         Driver driver = driverService.getDriverById(driverId);
 
@@ -45,7 +46,7 @@ public class TeamService {
     }
 
     @Transactional
-    public Team removeDriver(int teamId, int driverId) {
+    public Team removeDriver(UUID teamId, UUID driverId) {
         Team team = getTeamById(teamId);
         Driver driver = driverService.getDriverById(driverId);
 
@@ -65,7 +66,7 @@ public class TeamService {
         return old;
     }
 
-    public void deleteTeamById(int id) {
+    public void deleteTeamById(UUID id) {
         teamRepository.deleteById(id);
     }
 }

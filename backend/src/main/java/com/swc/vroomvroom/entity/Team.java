@@ -5,14 +5,15 @@ import lombok.Data;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "TEAM")
 public class Team {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int teamId;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID teamId;
     private String name;
     private String country;
 
@@ -26,8 +27,7 @@ public class Team {
         drivers = builder.drivers;
     }
 
-
-    public int getTeamId() {
+    public UUID getTeamId() {
         return teamId;
     }
 
@@ -52,15 +52,12 @@ public class Team {
     }
 
     public static final class Builder {
-        private int teamId;
+        private UUID teamId;
         private String name;
         private String country;
         private Set<Driver> drivers;
 
-        public Builder() {
-        }
-
-        public Builder withTeamId(int teamId) {
+        public Builder withTeamId(UUID teamId) {
             this.teamId = teamId;
             return this;
         }

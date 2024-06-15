@@ -13,8 +13,8 @@ import java.util.stream.Collectors;
 public class Race {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int raceId;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID raceId;
     private int calendarId;
     private int trackId;
     private LocalDate dateOfRace;
@@ -30,7 +30,7 @@ public class Race {
         standings = builder.standings;
     }
 
-    public int getRaceId() {
+    public UUID getRaceId() {
         return raceId;
     }
 
@@ -68,15 +68,14 @@ public class Race {
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
     }
 
-
     public static final class Builder {
-        private int raceId;
+        private UUID raceId;
         private int calendarId;
         private int trackId;
         private LocalDate dateOfRace;
         private Set<RaceStanding> standings;
 
-        public Builder withRaceId(int raceId) {
+        public Builder withRaceId(UUID raceId) {
             this.raceId = raceId;
             return this;
         }

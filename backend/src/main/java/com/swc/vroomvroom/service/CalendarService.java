@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 @Service
 public class CalendarService {
@@ -21,7 +22,7 @@ public class CalendarService {
     @Autowired
     private RaceService raceService;
 
-    public Calendar getCalendarById(int id) {
+    public Calendar getCalendarById(UUID id) {
         return calendarRepository.findById(id).orElse(null);
     }
 
@@ -29,7 +30,7 @@ public class CalendarService {
         return (List<Calendar>) calendarRepository.findAll();
     }
 
-    public Calendar generateRaceCalendar(int id) {
+    public Calendar generateRaceCalendar(UUID id) {
         Calendar calendar = getCalendarById(id);
         if (calendar.getRaces().isEmpty()) {
             List<Track> tracks = trackService.getAllTracks();
@@ -48,7 +49,7 @@ public class CalendarService {
     }
 
     @Transactional
-    public Calendar addRace(int calenderId, int trackId) {
+    public Calendar addRace(UUID calenderId, UUID trackId) {
         Calendar calendar = getCalendarById(calenderId);
         Track track = trackService.getTrackById(trackId);
         Race race = new Race();
@@ -61,7 +62,7 @@ public class CalendarService {
     }
 
 //    @Transactional
-//    public Calendar removeRace(int calenderId, int trackId) {
+//    public Calendar removeRace(UUID calenderId, UUID trackId) {
 //        Calendar calendar = getCalendarById(calenderId);
 //        Race race = raceService.getRaceById(raceId);
 //        calendar.removeRace(race);
@@ -80,7 +81,7 @@ public class CalendarService {
         return old;
     }
 
-    public void deleteCalendarById(int id) {
+    public void deleteCalendarById(UUID id) {
         calendarRepository.deleteById(id);
     }
 }

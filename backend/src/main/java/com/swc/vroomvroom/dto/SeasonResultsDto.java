@@ -5,9 +5,16 @@ import lombok.Data;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Data
 public class SeasonResultsDto {
     private List<DriverStandingDto> resultaten = new ArrayList<>();
+
+    private SeasonResultsDto(Builder builder) {
+        resultaten = builder.resultaten;
+    }
+
+    public List<DriverStandingDto> getResultaten() {
+        return resultaten;
+    }
 
     public void createSeasonResults(List<RaceStandingDto> raceStandings) {
         for (int i = 0; i < raceStandings.size(); i++) {
@@ -67,5 +74,18 @@ public class SeasonResultsDto {
     public void sortStanding() {
         Comparator<DriverStandingDto> comparator = Comparator.comparing(DriverStandingDto::getPoints).reversed();
         getResultaten().sort(comparator);
+    }
+
+    public static final class Builder {
+        private List<DriverStandingDto> resultaten;
+
+        public Builder withResultaten(List<DriverStandingDto> resultaten) {
+            this.resultaten = resultaten;
+            return this;
+        }
+
+        public SeasonResultsDto build() {
+            return new SeasonResultsDto(this);
+        }
     }
 }

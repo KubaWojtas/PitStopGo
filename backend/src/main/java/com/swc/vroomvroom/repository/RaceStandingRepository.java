@@ -4,5 +4,7 @@ import main.java.com.swc.vroomvroom.entity.RaceStanding;
 import main.java.com.swc.vroomvroom.entity.Track;
 import org.springframework.data.repository.CrudRepository;
 
-public interface RaceStandingRepository extends CrudRepository<RaceStanding, Integer> {
+import java.util.UUID;
+
+public interface RaceStandingRepository extends CrudRepository<RaceStanding, UUID> {
 }

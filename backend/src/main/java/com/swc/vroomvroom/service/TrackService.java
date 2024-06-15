@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class TrackService {
@@ -19,7 +20,7 @@ public class TrackService {
     @Autowired
     private RaceService raceService;
 
-    public Track getTrackById(int id) {
+    public Track getTrackById(UUID id) {
         return trackRepository.findById(id).orElse(null);
     }
 
@@ -36,14 +37,14 @@ public class TrackService {
     }
 
     @Transactional
-    public void addRace(int trackId, int raceId) {
+    public void addRace(UUID trackId, UUID raceId) {
         Track track = getTrackById(trackId);
         Race race = raceService.getRaceById(raceId);
         track.addRace(race);
     }
 
     @Transactional
-    public void removeRace(int trackId, int raceId) {
+    public void removeRace(UUID trackId, UUID raceId) {
         Track track = getTrackById(trackId);
         Race race = raceService.getRaceById(raceId);
         track.removeRace(race);
@@ -61,7 +62,7 @@ public class TrackService {
         return old;
     }
 
-    public void deleteTrackById(int id) {
+    public void deleteTrackById(UUID id) {
         trackRepository.deleteById(id);
     }
 }

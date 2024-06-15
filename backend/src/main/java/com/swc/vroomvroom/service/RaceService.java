@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static java.lang.String.valueOf;
@@ -31,7 +32,7 @@ public class RaceService {
 
     private int randomTimeOffset;
 
-    public Race getRaceById(int id) {
+    public Race getRaceById(UUID id) {
         return raceRepository.findById(id).orElse(null);
     }
 
@@ -39,7 +40,7 @@ public class RaceService {
         return (List<Race>) raceRepository.findAll();
     }
 
-    public RaceStandingDto simulateRace(int raceId) {
+    public RaceStandingDto simulateRace(UUID raceId) {
         Race race = getRaceById(raceId);
         Map<Integer, Integer> standings = race.simulateRace(driverService.getAllDrivers());
         int[] pointsArray = {25, 18, 15, 12, 10, 8, 6, 4, 2, 1};
@@ -91,7 +92,7 @@ public class RaceService {
         for (Race race: races) {
             standings.add(simulateRace(race.getRaceId()));
         }
-        SeasonResultsDto seasonResultsDto = new SeasonResultsDto();
+        SeasonResultsDto seasonResultsDto = new SeasonResultsDto.Builder().build();
         seasonResultsDto.createSeasonResults(standings);
         return seasonResultsDto;
     }

@@ -6,6 +6,7 @@ import main.java.com.swc.vroomvroom.domain.TrackType;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 
 @Entity
@@ -13,8 +14,8 @@ import java.util.Set;
 public class Track {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int trackId;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID trackId;
     private String name;
     private String location;
     private String country;
@@ -34,8 +35,7 @@ public class Track {
         races = builder.races;
     }
 
-
-    public int getTrackId() {
+    public UUID getTrackId() {
         return trackId;
     }
 
@@ -76,7 +76,7 @@ public class Track {
     }
 
     public static final class Builder {
-        private int trackId;
+        private UUID trackId;
         private String name;
         private String location;
         private String country;
@@ -84,10 +84,7 @@ public class Track {
         private float lapRecord;
         private Set<Race> races;
 
-        public Builder() {
-        }
-
-        public Builder withTrackId(int trackId) {
+        public Builder withTrackId(UUID trackId) {
             this.trackId = trackId;
             return this;
         }

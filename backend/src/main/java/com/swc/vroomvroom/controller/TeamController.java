@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @CrossOrigin()
@@ -17,7 +18,7 @@ public class TeamController {
     private TeamService service;
 
     @GetMapping("/{id}")
-    public Team findById(@PathVariable("id") int id) {
+    public Team findById(@PathVariable("id") UUID id) {
         return service.getTeamById(id);
     }
 
@@ -32,12 +33,12 @@ public class TeamController {
     }
 
     @PostMapping("/{id}/addDriver/{driverId}")
-    public Team addDriver(@PathVariable("id") int id, @PathVariable("driverId") int driverId) {
+    public Team addDriver(@PathVariable("id") UUID id, @PathVariable("driverId") UUID driverId) {
         return service.addDriver(id, driverId);
     }
 
     @PostMapping("/{id}/removeDriver/{driverId}")
-    public Team removeDriver(@PathVariable("id") int id, @PathVariable("driverId") int driverId) {
+    public Team removeDriver(@PathVariable("id") UUID id, @PathVariable("driverId") UUID driverId) {
         return service.removeDriver(id, driverId);
     }
 
@@ -47,7 +48,7 @@ public class TeamController {
     }
 
     @DeleteMapping("/{id}/delete")
-    public void deleteById(@PathVariable("id") int id) {
+    public void deleteById(@PathVariable("id") UUID id) {
         service.deleteTeamById(id);
     }
 }

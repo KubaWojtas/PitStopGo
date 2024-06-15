@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @CrossOrigin()
@@ -16,7 +17,7 @@ public class TrackController {
     private TrackService service;
 
     @GetMapping("/{id}")
-    public Track findById(@PathVariable("id") int id) {
+    public Track findById(@PathVariable("id") UUID id) {
         return service.getTrackById(id);
     }
 
@@ -36,7 +37,7 @@ public class TrackController {
     }
 
     @DeleteMapping("/{id}/delete")
-    public void deleteById(@PathVariable("id") int id) {
+    public void deleteById(@PathVariable("id") UUID id) {
         service.deleteTrackById(id);
     }
 }

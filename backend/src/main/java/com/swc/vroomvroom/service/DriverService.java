@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class DriverService {
@@ -13,7 +14,7 @@ public class DriverService {
     @Autowired
     private DriverRepository driverRepository;
 
-    public Driver getDriverById(int id) {
+    public Driver getDriverById(UUID id) {
         return driverRepository.findById(id).orElse(null);
     }
 
@@ -41,7 +42,7 @@ public class DriverService {
         return old;
     }
 
-    public void deleteDriverById(int id) {
+    public void deleteDriverById(UUID id) {
         driverRepository.deleteById(id);
     }
 }

@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
+import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Entity
@@ -14,8 +15,8 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Calendar {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int calendarId;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID calendarId;
     private String name;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "calendarId")
@@ -27,7 +28,7 @@ public class Calendar {
         races = builder.races;
     }
 
-    public int getCalendarId() {
+    public UUID getCalendarId() {
         return calendarId;
     }
 
@@ -59,14 +60,11 @@ public class Calendar {
     }
 
     public static final class Builder {
-        private int calendarId;
+        private UUID calendarId;
         private String name;
         private Set<Race> races;
 
-        public Builder() {
-        }
-
-        public Builder withCalendarId(int calendarId) {
+        public Builder withCalendarId(UUID calendarId) {
             this.calendarId = calendarId;
             return this;
         }

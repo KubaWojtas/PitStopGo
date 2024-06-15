@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @CrossOrigin()
@@ -18,7 +19,7 @@ public class RaceController {
     private RaceService service;
 
     @GetMapping("/{id}")
-    public Race findById(@PathVariable("id") int id) {
+    public Race findById(@PathVariable("id") UUID id) {
         return service.getRaceById(id);
     }
 
@@ -27,19 +28,18 @@ public class RaceController {
         return service.getAllRaces();
     }
 
+    @PostMapping("/add")
+    public Race addRace(@RequestBody Race race) {
+        return service.createRace(race);
+    }
+
     @GetMapping("/{id}/simulate")
-    public RaceStandingDto simulateRace(@PathVariable("id") int id) {
+    public RaceStandingDto simulateRace(@PathVariable("id") UUID id) {
         return service.simulateRace(id);
     }
 
     @GetMapping("/simulateAllRaces")
     public SeasonResultsDto simulateAllRaces() {
         return service.simulateAllRaces();
-    }
-
-
-    @PostMapping("/add")
-    public Race addRace(@RequestBody Race race) {
-        return service.createRace(race);
     }
 }
