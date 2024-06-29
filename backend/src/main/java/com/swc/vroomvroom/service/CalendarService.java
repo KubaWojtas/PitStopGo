@@ -1,13 +1,17 @@
 package main.java.com.swc.vroomvroom.service;
 
 import jakarta.transaction.Transactional;
+import main.java.com.swc.vroomvroom.dto.RaceStandingDto;
+import main.java.com.swc.vroomvroom.dto.SeasonResultsDto;
 import main.java.com.swc.vroomvroom.entity.Calendar;
 import main.java.com.swc.vroomvroom.entity.Race;
+import main.java.com.swc.vroomvroom.entity.RaceStanding;
 import main.java.com.swc.vroomvroom.entity.Track;
 import main.java.com.swc.vroomvroom.repository.CalendarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
@@ -30,11 +34,15 @@ public class CalendarService {
         return (List<Calendar>) calendarRepository.findAll();
     }
 
+    public Calendar createCalender(Calendar calendar) {
+        return calendarRepository.save(calendar);
+    }
+
     public Calendar generateRaceCalendar(UUID id) {
         Calendar calendar = getCalendarById(id);
         if (calendar.getRaces().isEmpty()) {
             List<Track> tracks = trackService.getAllTracks();
-            for (Track track: tracks) {
+            for (Track track : tracks) {
                 Race race = new Race();
                 race.setTrackId(track.getTrackId());
                 calendar.addRace(race);
@@ -44,8 +52,16 @@ public class CalendarService {
         return calendarRepository.save(calendar);
     }
 
-    public Calendar createCalender(Calendar calendar) {
-        return calendarRepository.save(calendar);
+    public SeasonResultsDto simulateCalendar(UUID id) {
+        Calendar calendar = getCalendarById(id);
+        List<RaceStandingDto> standings= new ArrayList<>();
+        for (Race race: calendar.getRaces()) {
+            RaceStandingDto raceStanding = raceService.simulateRace(race.getRaceId());
+            standings.add(raceStanding);
+        }
+        SeasonResultsDto seasonResultsDto = new SeasonResultsDto();
+        seasonResultsDto.createSeasonResults(standings);
+        return seasonResultsDto;
     }
 
     @Transactional

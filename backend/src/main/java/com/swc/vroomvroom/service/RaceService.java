@@ -86,17 +86,6 @@ public class RaceService {
         return String.format("%02d:%02d:%02d.%03d", hours, minutes, seconds, millis);
     }
 
-//    public SeasonResultsDto simulateAllRaces() {
-//        List<Race> races = getAllRaces();
-//        List<RaceStandingDto> standings= new ArrayList<>();
-//        for (Race race: races) {
-//            standings.add(simulateRace(race.getRaceId()));
-//        }
-//        SeasonResultsDto seasonResultsDto = new SeasonResultsDto.Builder().build();
-//        seasonResultsDto.createSeasonResults(standings);
-//        return seasonResultsDto;
-//    }
-
     public Race createRace(Race race) {
         return raceRepository.save(race);
     }
