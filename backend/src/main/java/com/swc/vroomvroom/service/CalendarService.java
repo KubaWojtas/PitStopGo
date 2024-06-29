@@ -30,36 +30,36 @@ public class CalendarService {
         return (List<Calendar>) calendarRepository.findAll();
     }
 
-    public Calendar generateRaceCalendar(UUID id) {
-        Calendar calendar = getCalendarById(id);
-        if (calendar.getRaces().isEmpty()) {
-            List<Track> tracks = trackService.getAllTracks();
-            for (Track track: tracks) {
-                Race race = new Race();
-                race.setTrackId(track.getTrackId());
-                calendar.addRace(race);
-            }
-        }
-        calendar.generateRaceCalendar();
-        return calendarRepository.save(calendar);
-    }
+//    public Calendar generateRaceCalendar(UUID id) {
+//        Calendar calendar = getCalendarById(id);
+//        if (calendar.getRaces().isEmpty()) {
+//            List<Track> tracks = trackService.getAllTracks();
+//            for (Track track: tracks) {
+//                Race race = new Race();
+//                race.setTrackId(track.getTrackId());
+//                calendar.addRace(race);
+//            }
+//        }
+//        calendar.generateRaceCalendar();
+//        return calendarRepository.save(calendar);
+//    }
 
     public Calendar createCalender(Calendar calendar) {
         return calendarRepository.save(calendar);
     }
 
-    @Transactional
-    public Calendar addRace(UUID calenderId, UUID trackId) {
-        Calendar calendar = getCalendarById(calenderId);
-        Track track = trackService.getTrackById(trackId);
-        Race race = new Race();
-        race.setCalendarId(calenderId);
-        race.setTrackId(trackId);
-        raceService.createRace(race);
-        calendar.addRace(race);
-        track.addRace(race);
-        return calendar;
-    }
+//    @Transactional
+//    public Calendar addRace(UUID calenderId, UUID trackId) {
+//        Calendar calendar = getCalendarById(calenderId);
+//        Track track = trackService.getTrackById(trackId);
+//        Race race = new Race();
+//        race.setCalendarId(calenderId);
+//        race.setTrackId(trackId);
+//        raceService.createRace(race);
+//        calendar.addRace(race);
+//        track.addRace(race);
+//        return calendar;
+//    }
 
 //    @Transactional
 //    public Calendar removeRace(UUID calenderId, UUID trackId) {
@@ -69,17 +69,17 @@ public class CalendarService {
 //        return calendar;
 //    }
 
-    public Calendar updateCalendar(Calendar calendar) {
-        Calendar old = getCalendarById(calendar.getCalendarId());
-        if (old != null) {
-            old.setName(calendar.getName());
-            calendarRepository.save(old);
-        }
-        else {
-            return new Calendar();
-        }
-        return old;
-    }
+//    public Calendar updateCalendar(Calendar calendar) {
+//        Calendar old = getCalendarById(calendar.getCalendarId());
+//        if (old != null) {
+//            old.setName(calendar.getName());
+//            calendarRepository.save(old);
+//        }
+//        else {
+//            return new Calendar();
+//        }
+//        return old;
+//    }
 
     public void deleteCalendarById(UUID id) {
         calendarRepository.deleteById(id);

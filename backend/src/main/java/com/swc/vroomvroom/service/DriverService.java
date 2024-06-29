@@ -26,21 +26,21 @@ public class DriverService {
         return driverRepository.save(driver);
     }
 
-    public List<Driver> createDrivers(List<Driver> drivers) {
-        return (List<Driver>) driverRepository.saveAll(drivers);
-    }
+//    public List<Driver> createDrivers(List<Driver> drivers) {
+//        return (List<Driver>) driverRepository.saveAll(drivers);
+//    }
 
-    public Driver updateDriver(Driver driver) {
-        Driver old = getDriverById(driver.getDriverId());
-        if (old != null) {
-            old.setFirstName(driver.getFirstName());
-            driverRepository.save(old);
-        }
-        else {
-            return new Driver();
-        }
-        return old;
-    }
+//    public Driver updateDriver(Driver driver) {
+//        Driver old = getDriverById(driver.getDriverId());
+//        if (old != null) {
+//            old.setFirstName(driver.getFirstName());
+//            driverRepository.save(old);
+//        }
+//        else {
+//            return new Driver();
+//        }
+//        return old;
+//    }
 
     public void deleteDriverById(UUID id) {
         driverRepository.deleteById(id);

@@ -30,11 +30,11 @@ public class TrackController {
     public Track addTrack(@RequestBody Track track) {
         return service.createTrack(track);
     }
-
-    @PutMapping("/update")
-    public Track updateTrack(@RequestBody Track track) {
-        return service.updateTrack(track);
-    }
+//
+//    @PutMapping("/update")
+//    public Track updateTrack(@RequestBody Track track) {
+//        return service.updateTrack(track);
+//    }
 
     @DeleteMapping("/{id}/delete")
     public void deleteById(@PathVariable("id") UUID id) {

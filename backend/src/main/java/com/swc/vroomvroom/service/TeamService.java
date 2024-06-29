@@ -32,14 +32,15 @@ public class TeamService {
         return teamRepository.save(team);
     }
 
-    public List<Team> createsTeam(List<Team> teams) {
-        return (List<Team>) teamRepository.saveAll(teams);
-    }
+//    public List<Team> createsTeam(List<Team> teams) {
+//        return (List<Team>) teamRepository.saveAll(teams);
+//    }
 
     @Transactional
     public Team addDriver(UUID teamId, UUID driverId) {
         Team team = getTeamById(teamId);
         Driver driver = driverService.getDriverById(driverId);
+        driver.setTeamId(teamId);
 
         team.addDriver(driver);
         return team;
@@ -49,22 +50,23 @@ public class TeamService {
     public Team removeDriver(UUID teamId, UUID driverId) {
         Team team = getTeamById(teamId);
         Driver driver = driverService.getDriverById(driverId);
+        driver.setTeamId(null);
 
         team.removeDriver(driver);
         return team;
     }
 
-    public Team updateTeam(Team team) {
-        Team old = getTeamById(team.getTeamId());
-        if (old != null) {
-            old.setName(team.getName());
-            teamRepository.save(old);
-        }
-        else {
-            return new Team();
-        }
-        return old;
-    }
+//    public Team updateTeam(Team team) {
+//        Team old = getTeamById(team.getTeamId());
+//        if (old != null) {
+//            old.setName(team.getName());
+//            teamRepository.save(old);
+//        }
+//        else {
+//            return new Team();
+//        }
+//        return old;
+//    }
 
     public void deleteTeamById(UUID id) {
         teamRepository.deleteById(id);

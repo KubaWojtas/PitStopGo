@@ -31,10 +31,10 @@ public class DriverController {
         return service.createDriver(driver);
     }
 
-    @PutMapping("/update")
-    public Driver updateDriver(@RequestBody Driver driver) {
-        return service.updateDriver(driver);
-    }
+//    @PutMapping("/update")
+//    public Driver updateDriver(@RequestBody Driver driver) {
+//        return service.updateDriver(driver);
+//    }
 
     @DeleteMapping("/{id}/delete")
     public void deleteById(@PathVariable("id") UUID id) {

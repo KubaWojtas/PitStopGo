@@ -32,14 +32,14 @@ public class RaceController {
     public Race addRace(@RequestBody Race race) {
         return service.createRace(race);
     }
-
-    @GetMapping("/{id}/simulate")
-    public RaceStandingDto simulateRace(@PathVariable("id") UUID id) {
-        return service.simulateRace(id);
-    }
-
-    @GetMapping("/simulateAllRaces")
-    public SeasonResultsDto simulateAllRaces() {
-        return service.simulateAllRaces();
-    }
+//
+//    @GetMapping("/{id}/simulate")
+//    public RaceStandingDto simulateRace(@PathVariable("id") UUID id) {
+//        return service.simulateRace(id);
+//    }
+//
+//    @GetMapping("/simulateAllRaces")
+//    public SeasonResultsDto simulateAllRaces() {
+//        return service.simulateAllRaces();
+//    }
 }

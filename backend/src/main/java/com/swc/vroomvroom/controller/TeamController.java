@@ -41,11 +41,11 @@ public class TeamController {
     public Team removeDriver(@PathVariable("id") UUID id, @PathVariable("driverId") UUID driverId) {
         return service.removeDriver(id, driverId);
     }
-
-    @PutMapping("/update")
-    public Team updateTeam(@RequestBody Team team) {
-        return service.updateTeam(team);
-    }
+//
+//    @PutMapping("/update")
+//    public Team updateTeam(@RequestBody Team team) {
+//        return service.updateTeam(team);
+//    }
 
     @DeleteMapping("/{id}/delete")
     public void deleteById(@PathVariable("id") UUID id) {
