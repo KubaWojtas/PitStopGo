@@ -26,26 +26,26 @@ public class CalendarController {
         return service.getAllCalendars();
     }
 
-//    @GetMapping("/{id}/generate")
-//    public Calendar generateRaceCalendar(@PathVariable("id") UUID id) {
-//        return service.generateRaceCalendar(id);
-//    }
+    @GetMapping("/{id}/generate")
+    public Calendar generateRaceCalendar(@PathVariable("id") UUID id) {
+        return service.generateRaceCalendar(id);
+    }
 
     @PostMapping("/add")
     public Calendar addCalender(@RequestBody Calendar calendar) {
         return service.createCalender(calendar);
     }
 
-//    @PostMapping("/{id}/addRace/{raceId}")
-//    public Calendar addRace(@PathVariable("id") UUID id, @PathVariable("raceId") UUID raceId) {
-//        return service.addRace(id, raceId);
-//    }
+    @PostMapping("/{id}/addRace/{trackId}")
+    public Calendar addRace(@PathVariable("id") UUID id, @PathVariable("trackId") UUID trackId) {
+        return service.addRace(id, trackId);
+    }
 
-//    @PostMapping("/{id}/removeRace/{raceId}")
-//    public Calendar removeRace(@PathVariable("id") UUID id, @PathVariable("raceId") UUID raceId) {
-//        return service.removeRace(id, raceId);
-//    }
-//
+    @PostMapping("/{id}/removeRace/{raceId}")
+    public Calendar removeRace(@PathVariable("id") UUID id, @PathVariable("raceId") UUID raceId) {
+        return service.removeRace(id, raceId);
+    }
+
 //    @PutMapping("/update")
 //    public Calendar updateCalendar(@RequestBody Calendar calendar) {
 //        return service.updateCalendar(calendar);

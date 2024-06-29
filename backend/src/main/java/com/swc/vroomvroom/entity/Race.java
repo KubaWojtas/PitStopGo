@@ -16,8 +16,8 @@ public class Race {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID raceId;
-    private int calendarId;
-    private int trackId;
+    private UUID calendarId;
+    private UUID trackId;
     private LocalDate dateOfRace;
 
     @OneToMany(mappedBy = "race")

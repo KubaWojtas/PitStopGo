@@ -23,14 +23,22 @@ public class Calendar {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "calendarId")
     private Set<Race> races = new HashSet<>();
 
-//    public void generateRaceCalendar() {
-//        LocalDate dateOfStart = LocalDate.of(2024, 3, 2);
-//        ThreadLocalRandom random = ThreadLocalRandom.current();
-//
-//        for (Race race : races) {
-//            race.setDateOfRace(dateOfStart);
-//            int randomWeeks = random.nextInt(1, 4);
-//            dateOfStart = dateOfStart.plusWeeks(randomWeeks);
-//        }
-//    }
+    public void addRace(Race race) {
+        races.add(race);
+    }
+
+    public void removeRace(Race race) {
+        races.remove(race);
+    }
+
+    public void generateRaceCalendar() {
+        LocalDate dateOfStart = LocalDate.of(2024, 3, 2);
+        ThreadLocalRandom random = ThreadLocalRandom.current();
+
+        for (Race race : races) {
+            race.setDateOfRace(dateOfStart);
+            int randomWeeks = random.nextInt(1, 4);
+            dateOfStart = dateOfStart.plusWeeks(randomWeeks);
+        }
+    }
 }
