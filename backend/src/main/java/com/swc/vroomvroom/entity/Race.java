@@ -27,18 +27,18 @@ public class Race {
         standings.add(raceStanding);
     }
 
-//    public Map<Integer, Integer> simulateRace(List<Driver> drivers) {
-//        Map<Integer, Integer> standing = new HashMap<>();
-//        ThreadLocalRandom random = ThreadLocalRandom.current();
-//
-//        drivers.forEach(driver ->
-//                standing.put(driver.getDriverId(), random.nextInt(driver.getWinChangeMin(), driver.getWinChangeMax() + 1))
-//        );
-//
-//        return standing.entrySet()
-//                .stream()
-//                .sorted(Map.Entry.<Integer, Integer>comparingByValue().reversed())
-//                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
-//    }
+    public Map<UUID, Integer> simulateRace(List<Driver> drivers) {
+        Map<UUID, Integer> standing = new HashMap<>();
+        ThreadLocalRandom random = ThreadLocalRandom.current();
+
+        drivers.forEach(driver ->
+                standing.put(driver.getDriverId(), random.nextInt(driver.getWinChangeMin(), driver.getWinChangeMax() + 1))
+        );
+
+        return standing.entrySet()
+                .stream()
+                .sorted(Map.Entry.<UUID, Integer>comparingByValue().reversed())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+    }
 
 }

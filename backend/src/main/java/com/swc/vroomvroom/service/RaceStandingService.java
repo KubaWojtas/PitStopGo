@@ -16,23 +16,23 @@ public class RaceStandingService {
     @Autowired
     private RaceStandingRepository raceStandingRepository;
 
-//    public RaceStandingDto getRaceStandingById(UUID id) {
-//        List<RaceStanding> raceStandings = (List<RaceStanding>) raceStandingRepository.findAll();
-//        RaceStandingDto result = new RaceStandingDto();
-//        List<DriverStandingDto> resultaten = result.getResultaten();
-//        for (RaceStanding r : raceStandings) {
-//            if (r.getRace().getRaceId() == id) {
-//                DriverStandingDto driverStandingDto = new DriverStandingDto();
-//                driverStandingDto.setPosition(Integer.parseInt(r.getPosition()));
-//                driverStandingDto.setDriverName(r.getDriver().getLastName());
-//                driverStandingDto.setPoints(r.getPoints());
-//                driverStandingDto.setTime(r.getTime());
-//                resultaten.add(driverStandingDto);
-//            }
-//        }
-//        result.sortStanding();
-//        return result;
-//    }
+    public RaceStandingDto getRaceStandingById(UUID id) {
+        List<RaceStanding> raceStandings = (List<RaceStanding>) raceStandingRepository.findAll();
+        RaceStandingDto result = new RaceStandingDto();
+        List<DriverStandingDto> resultaten = result.getResultaten();
+        for (RaceStanding r : raceStandings) {
+            if (r.getRace().getRaceId() == id) {
+                DriverStandingDto driverStandingDto = new DriverStandingDto();
+                driverStandingDto.setPosition(Integer.parseInt(r.getPosition()));
+                driverStandingDto.setDriverName(r.getDriver().getLastName());
+                driverStandingDto.setPoints(r.getPoints());
+                driverStandingDto.setTime(r.getTime());
+                resultaten.add(driverStandingDto);
+            }
+        }
+        result.sortStanding();
+        return result;
+    }
 
     public void createRaceStanding(RaceStanding raceStanding) {
         raceStandingRepository.save(raceStanding);
