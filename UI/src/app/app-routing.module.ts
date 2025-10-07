@@ -10,6 +10,7 @@ import {CardModule} from "primeng/card";
 import {ReactiveFormsModule} from "@angular/forms";
 import {InputTextModule} from "primeng/inputtext";
 import {ButtonModule} from "primeng/button";
+import {CalendarOverviewV2Component} from "./calendar/calender-overview-V2.component";
 
 const routes: Routes = [
   {
@@ -30,7 +31,7 @@ const routes: Routes = [
   },
   {
     path: 'calendar',
-    component: CalendarOverviewComponent,
+    component: CalendarOverviewV2Component,
   }
 ];
 

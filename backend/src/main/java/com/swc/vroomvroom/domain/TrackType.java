@@ -1,4 +1,4 @@
-package main.java.com.swc.vroomvroom.domain;
+package com.swc.vroomvroom.domain;
 
 public enum TrackType {
     Street,

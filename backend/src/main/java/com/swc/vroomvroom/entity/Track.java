@@ -1,8 +1,7 @@
-package main.java.com.swc.vroomvroom.entity;
+package com.swc.vroomvroom.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import main.java.com.swc.vroomvroom.domain.TrackType;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,7 +1,7 @@
-package main.java.com.swc.vroomvroom.controller;
+package com.swc.vroomvroom.controller;
 
-import main.java.com.swc.vroomvroom.entity.Driver;
-import main.java.com.swc.vroomvroom.service.DriverService;
+import com.swc.vroomvroom.entity.Driver;
+import com.swc.vroomvroom.service.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

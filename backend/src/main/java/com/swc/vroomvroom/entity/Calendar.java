@@ -1,4 +1,4 @@
-package main.java.com.swc.vroomvroom.entity;
+package com.swc.vroomvroom.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

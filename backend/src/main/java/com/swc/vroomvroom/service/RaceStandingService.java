@@ -1,9 +1,9 @@
-package main.java.com.swc.vroomvroom.service;
+package com.swc.vroomvroom.service;
 
-import main.java.com.swc.vroomvroom.dto.DriverStandingDto;
-import main.java.com.swc.vroomvroom.dto.RaceStandingDto;
-import main.java.com.swc.vroomvroom.entity.RaceStanding;
-import main.java.com.swc.vroomvroom.repository.RaceStandingRepository;
+import com.swc.vroomvroom.dto.DriverStandingDto;
+import com.swc.vroomvroom.dto.RaceStandingDto;
+import com.swc.vroomvroom.entity.RaceStanding;
+import com.swc.vroomvroom.repository.RaceStandingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

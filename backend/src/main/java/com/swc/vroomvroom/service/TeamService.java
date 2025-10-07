@@ -1,13 +1,12 @@
-package main.java.com.swc.vroomvroom.service;
+package com.swc.vroomvroom.service;
 
 import jakarta.transaction.Transactional;
-import main.java.com.swc.vroomvroom.entity.Driver;
-import main.java.com.swc.vroomvroom.entity.Race;
-import main.java.com.swc.vroomvroom.entity.Team;
-import main.java.com.swc.vroomvroom.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.swc.vroomvroom.entity.Driver;
+import com.swc.vroomvroom.entity.Team;
+import com.swc.vroomvroom.repository.TeamRepository;
 import java.util.List;
 import java.util.UUID;
 
@@ -40,7 +39,7 @@ public class TeamService {
     public Team addDriver(UUID teamId, UUID driverId) {
         Team team = getTeamById(teamId);
         Driver driver = driverService.getDriverById(driverId);
-        driver.setTeamId(teamId);
+//        driver.setTeamId(teamId);
 
         team.addDriver(driver);
         return team;
@@ -50,7 +49,7 @@ public class TeamService {
     public Team removeDriver(UUID teamId, UUID driverId) {
         Team team = getTeamById(teamId);
         Driver driver = driverService.getDriverById(driverId);
-        driver.setTeamId(null);
+//        driver.setTeamId(null);
 
         team.removeDriver(driver);
         return team;

@@ -1,4 +1,4 @@
-package main.java.com.swc.vroomvroom;
+package com.swc.vroomvroom;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

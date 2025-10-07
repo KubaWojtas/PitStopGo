@@ -25,6 +25,10 @@ export class CalendarService {
     return this.http.get(`${baseUrl}/${id}/generate`);
   }
 
+  simulateCalendar(id: any): Observable<Calendar> {
+    return this.http.get(`${baseUrl}/${id}/simulate`);
+  }
+
   create(data: any): Observable<any> {
     return this.http.post(`${baseUrl}/add`, data);
   }

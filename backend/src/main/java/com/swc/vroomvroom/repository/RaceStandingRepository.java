@@ -1,9 +1,8 @@
-package main.java.com.swc.vroomvroom.repository;
+package com.swc.vroomvroom.repository;
 
-import main.java.com.swc.vroomvroom.entity.RaceStanding;
-import main.java.com.swc.vroomvroom.entity.Track;
 import org.springframework.data.repository.CrudRepository;
 
+import com.swc.vroomvroom.entity.RaceStanding;
 import java.util.UUID;
 
 public interface RaceStandingRepository extends CrudRepository<RaceStanding, UUID> {

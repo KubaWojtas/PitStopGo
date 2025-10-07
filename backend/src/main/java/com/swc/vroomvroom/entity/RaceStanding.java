@@ -1,6 +1,7 @@
-package main.java.com.swc.vroomvroom.entity;
+package com.swc.vroomvroom.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -32,4 +33,56 @@ public class RaceStanding {
         this.race = race;
     }
 
+    private RaceStanding(Builder builder) {
+        setId(builder.id);
+        setDriver(builder.driver);
+        setRace(builder.race);
+        setPosition(builder.position);
+        setPoints(builder.points);
+        setTime(builder.time);
+    }
+
+    public static final class Builder {
+
+        private RaceStandingKey id;
+        private Driver driver;
+        private Race race;
+        private String position;
+        private int points;
+        private String time;
+
+        public Builder withId(RaceStandingKey id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder withDriver(Driver driver) {
+            this.driver = driver;
+            return this;
+        }
+
+        public Builder withRace(Race race) {
+            this.race = race;
+            return this;
+        }
+
+        public Builder withPosition(String position) {
+            this.position = position;
+            return this;
+        }
+
+        public Builder withPoints(int points) {
+            this.points = points;
+            return this;
+        }
+
+        public Builder withTime(String time) {
+            this.time = time;
+            return this;
+        }
+
+        public RaceStanding build() {
+            return new RaceStanding(this);
+        }
+    }
 }

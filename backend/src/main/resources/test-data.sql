@@ -56,3 +56,10 @@ INSERT INTO track (track_id, name, location, country, distance, lap_record) valu
 INSERT INTO track (track_id, name, location, country, distance, lap_record) values ('fcda6c83-5ca1-4482-a50a-93bd29f3f496', 'British Grand Prix', 'Silverstone', 'United Kingdom', '5.891', '87.097');
 INSERT INTO track (track_id, name, location, country, distance, lap_record) values ('a4b79920-9336-49ab-bd1a-e2e200380fb1', 'Japanese Grand Prix', 'Suzuka', 'Japan', '5.807', '90.983');
 INSERT INTO track (track_id, name, location, country, distance, lap_record) values ('3fc3fdd0-7bb4-4a7a-b98f-47d6ab0daef9', 'Abu Dhabi Grand Prix', 'Abu Dhabi', 'UAE', '5.281', '86.103');
+
+
+insert into calendar (calendar_id, name) values ('7c7985af-9687-44f2-8438-ffbcd7393a5b', '24');
+
+
+insert into race (race_id, calendar_id, track_id, date_of_race) values ('57be340d-2787-47dd-ae54-cf9a9f4cd0a8', '7c7985af-9687-44f2-8438-ffbcd7393a5b', '6c651b64-bc2d-48d1-870c-cfb1763c02b5', '2024-03-16');
+insert into race (race_id, calendar_id, track_id, date_of_race) values ('7082f287-d2bf-4daa-b134-8346223a5ebd', '7c7985af-9687-44f2-8438-ffbcd7393a5b', 'baa0860d-0cc9-42f2-9a1f-78cc6e4a5ee9', '2024-03-25');

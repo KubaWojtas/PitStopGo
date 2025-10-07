@@ -1,12 +1,11 @@
-package main.java.com.swc.vroomvroom.controller;
+package com.swc.vroomvroom.controller;
 
-import main.java.com.swc.vroomvroom.dto.RaceStandingDto;
-import main.java.com.swc.vroomvroom.dto.SeasonResultsDto;
-import main.java.com.swc.vroomvroom.entity.Race;
-import main.java.com.swc.vroomvroom.service.RaceService;
+import com.swc.vroomvroom.dto.RaceStandingDto;
+import com.swc.vroomvroom.entity.Race;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import com.swc.vroomvroom.service.RaceService;
 import java.util.List;
 import java.util.UUID;
 

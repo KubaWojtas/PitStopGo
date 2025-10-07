@@ -1,7 +1,7 @@
-package main.java.com.swc.vroomvroom.dto;
+package com.swc.vroomvroom.dto;
 
 import lombok.Data;
-import main.java.com.swc.vroomvroom.entity.Driver;
+import com.swc.vroomvroom.entity.Driver;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,7 +1,6 @@
-package main.java.com.swc.vroomvroom.dto;
+package com.swc.vroomvroom.dto;
 
-import lombok.Data;
-import main.java.com.swc.vroomvroom.entity.RaceStanding;
+import com.swc.vroomvroom.entity.RaceStanding;
 
 import java.time.LocalDate;
 import java.util.Set;

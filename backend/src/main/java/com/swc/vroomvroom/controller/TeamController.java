@@ -1,11 +1,10 @@
-package main.java.com.swc.vroomvroom.controller;
+package com.swc.vroomvroom.controller;
 
-import main.java.com.swc.vroomvroom.entity.Calendar;
-import main.java.com.swc.vroomvroom.entity.Team;
-import main.java.com.swc.vroomvroom.service.TeamService;
+import com.swc.vroomvroom.entity.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import com.swc.vroomvroom.service.TeamService;
 import java.util.List;
 import java.util.UUID;
 

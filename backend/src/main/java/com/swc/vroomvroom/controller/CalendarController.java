@@ -1,8 +1,8 @@
-package main.java.com.swc.vroomvroom.controller;
+package com.swc.vroomvroom.controller;
 
-import main.java.com.swc.vroomvroom.dto.SeasonResultsDto;
-import main.java.com.swc.vroomvroom.entity.Calendar;
-import main.java.com.swc.vroomvroom.service.CalendarService;
+import com.swc.vroomvroom.dto.SeasonResultsDto;
+import com.swc.vroomvroom.entity.Calendar;
+import com.swc.vroomvroom.service.CalendarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,10 +27,10 @@ public class CalendarController {
         return service.getAllCalendars();
     }
 
-    @GetMapping("/{id}/generate")
-    public Calendar generateRaceCalendar(@PathVariable("id") UUID id) {
-        return service.generateRaceCalendar(id);
-    }
+//    @GetMapping("/{id}/generate")
+//    public Calendar generateRaceCalendar(@PathVariable("id") UUID id) {
+//        return service.generateRaceCalendar(id);
+//    }
 
     @GetMapping("/{id}/simulate")
     public SeasonResultsDto simulateRaceCalendar(@PathVariable("id") UUID id) {

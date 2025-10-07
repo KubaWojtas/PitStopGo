@@ -1,4 +1,4 @@
-package main.java.com.swc.vroomvroom.dto;
+package com.swc.vroomvroom.dto;
 
 import lombok.Data;
 

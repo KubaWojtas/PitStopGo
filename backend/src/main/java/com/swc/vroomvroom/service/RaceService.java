@@ -1,16 +1,14 @@
-package main.java.com.swc.vroomvroom.service;
+package com.swc.vroomvroom.service;
 
-import main.java.com.swc.vroomvroom.dto.RaceStandingDto;
-import main.java.com.swc.vroomvroom.dto.SeasonResultsDto;
-import main.java.com.swc.vroomvroom.entity.Driver;
-import main.java.com.swc.vroomvroom.entity.Race;
-import main.java.com.swc.vroomvroom.entity.RaceStanding;
-import main.java.com.swc.vroomvroom.entity.Track;
-import main.java.com.swc.vroomvroom.repository.RaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import com.swc.vroomvroom.dto.RaceStandingDto;
+import com.swc.vroomvroom.entity.Driver;
+import com.swc.vroomvroom.entity.Race;
+import com.swc.vroomvroom.entity.RaceStanding;
+import com.swc.vroomvroom.entity.Track;
+import com.swc.vroomvroom.repository.RaceRepository;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -67,13 +65,8 @@ public class RaceService {
 
     private String generateRaceTime(Track track, int offset) {
         ThreadLocalRandom random = ThreadLocalRandom.current();
-        int randomTimeOffset = random.nextInt(1, 4);
 
-        if (offset != 1) {
-            randomTimeOffset += randomTimeOffset;
-        }
-
-        float time = track.getLapRecord() * (100 + randomTimeOffset) / 100;
+        float time = track.getLapRecord() * (100 + offset + random.nextInt(1, 4)) / 100;
         return calcTime(time * track.getLaps());
     }
 

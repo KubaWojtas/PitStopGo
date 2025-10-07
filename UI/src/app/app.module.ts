@@ -28,6 +28,9 @@ import {CalendarOverviewComponent} from "./calendar/calender-overview.component"
 import {CalendarService} from "./service/calendar.service";
 import {RaceService} from "./service/race.service";
 import {TableModule} from "primeng/table";
+import {TreeTableModule} from "primeng/treetable";
+import {RippleModule} from "primeng/ripple";
+import {CalendarOverviewV2Component} from "./calendar/calender-overview-V2.component";
 
 @NgModule({
   declarations: [
@@ -54,6 +57,7 @@ import {TableModule} from "primeng/table";
 
     //Calendar
     CalendarOverviewComponent,
+    CalendarOverviewV2Component,
   ],
   imports: [
     BrowserModule,
@@ -66,6 +70,8 @@ import {TableModule} from "primeng/table";
     ChipsModule,
     SidebarModule,
     TableModule,
+    TreeTableModule,
+    RippleModule,
   ],
   providers: [
     HttpClient,

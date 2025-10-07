@@ -1,6 +1,6 @@
-package main.java.com.swc.vroomvroom.repository;
+package com.swc.vroomvroom.repository;
 
-import main.java.com.swc.vroomvroom.entity.Calendar;
+import com.swc.vroomvroom.entity.Calendar;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.UUID;

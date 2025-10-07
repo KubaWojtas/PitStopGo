@@ -1,7 +1,7 @@
-package main.java.com.swc.vroomvroom.service;
+package com.swc.vroomvroom.service;
 
-import main.java.com.swc.vroomvroom.entity.Driver;
-import main.java.com.swc.vroomvroom.repository.DriverRepository;
+import com.swc.vroomvroom.entity.Driver;
+import com.swc.vroomvroom.repository.DriverRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
