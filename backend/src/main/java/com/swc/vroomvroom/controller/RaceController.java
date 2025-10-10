@@ -1,7 +1,7 @@
 package com.swc.vroomvroom.controller;
 
 import com.swc.vroomvroom.dto.RaceStandingDto;
-import com.swc.vroomvroom.entity.Race;
+import com.swc.vroomvroom.entity.RaceEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,17 +18,17 @@ public class RaceController {
     private RaceService service;
 
     @GetMapping("/{id}")
-    public Race findById(@PathVariable("id") UUID id) {
+    public RaceEntity findById(@PathVariable("id") UUID id) {
         return service.getRaceById(id);
     }
 
     @GetMapping()
-    public List<Race> findAll() {
+    public List<RaceEntity> findAll() {
         return service.getAllRaces();
     }
 
     @PostMapping("/add")
-    public Race addRace(@RequestBody Race race) {
+    public RaceEntity addRace(@RequestBody RaceEntity race) {
         return service.createRace(race);
     }
 

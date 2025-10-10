@@ -1,6 +1,6 @@
 package com.swc.vroomvroom.service;
 
-import com.swc.vroomvroom.entity.Track;
+import com.swc.vroomvroom.entity.TrackEntity;
 import com.swc.vroomvroom.repository.TrackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,15 +17,15 @@ public class TrackService {
     @Autowired
     private RaceService raceService;
 
-    public Track getTrackById(UUID id) {
+    public TrackEntity getTrackById(UUID id) {
         return trackRepository.findById(id).orElse(null);
     }
 
-    public List<Track> getAllTracks() {
-        return (List<Track>) trackRepository.findAll();
+    public List<TrackEntity> getAllTracks() {
+        return (List<TrackEntity>) trackRepository.findAll();
     }
 
-    public Track createTrack(Track track) {
+    public TrackEntity createTrack(TrackEntity track) {
         return trackRepository.save(track);
     }
 //

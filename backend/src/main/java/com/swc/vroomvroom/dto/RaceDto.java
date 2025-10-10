@@ -1,6 +1,6 @@
 package com.swc.vroomvroom.dto;
 
-import com.swc.vroomvroom.entity.RaceStanding;
+import com.swc.vroomvroom.entity.RaceStandingEntity;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -12,7 +12,7 @@ public class RaceDto {
     private int calendarId;
     private int trackId;
     private LocalDate dateOfRace;
-    private Set<RaceStanding> standings;
+    private Set<RaceStandingEntity> standings;
 
     private RaceDto(Builder builder) {
         raceId = builder.raceId;
@@ -38,7 +38,7 @@ public class RaceDto {
         return dateOfRace;
     }
 
-    public Set<RaceStanding> getStandings() {
+    public Set<RaceStandingEntity> getStandings() {
         return standings;
     }
 
@@ -47,7 +47,7 @@ public class RaceDto {
         private int calendarId;
         private int trackId;
         private LocalDate dateOfRace;
-        private Set<RaceStanding> standings;
+        private Set<RaceStandingEntity> standings;
 
         public Builder withRaceId(UUID raceId) {
             this.raceId = raceId;
@@ -69,7 +69,7 @@ public class RaceDto {
             return this;
         }
 
-        public Builder withStandings(Set<RaceStanding> standings) {
+        public Builder withStandings(Set<RaceStandingEntity> standings) {
             this.standings = standings;
             return this;
         }

@@ -1,6 +1,6 @@
 package com.swc.vroomvroom.dto;
 
-import com.swc.vroomvroom.entity.Race;
+import com.swc.vroomvroom.entity.RaceEntity;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,7 +10,7 @@ public class CalanderDto {
 
     private UUID calendarId;
     private String name;
-    private Set<Race> races = new HashSet<>();
+    private Set<RaceEntity> races = new HashSet<>();
 
     private CalanderDto(Builder builder) {
         calendarId = builder.calendarId;
@@ -26,14 +26,14 @@ public class CalanderDto {
         return name;
     }
 
-    public Set<Race> getRaces() {
+    public Set<RaceEntity> getRaces() {
         return races;
     }
 
     public static final class Builder {
         private UUID calendarId;
         private String name;
-        private Set<Race> races;
+        private Set<RaceEntity> races;
 
         public Builder withCalendarId(UUID calendarId) {
             this.calendarId = calendarId;
@@ -45,7 +45,7 @@ public class CalanderDto {
             return this;
         }
 
-        public Builder withRaces(Set<Race> races) {
+        public Builder withRaces(Set<RaceEntity> races) {
             this.races = races;
             return this;
         }

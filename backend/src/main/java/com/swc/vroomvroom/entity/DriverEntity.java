@@ -1,7 +1,6 @@
 package com.swc.vroomvroom.entity;
 
 import jakarta.persistence.*;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -9,7 +8,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "driver")
-public class Driver {
+public class DriverEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -24,11 +23,11 @@ public class Driver {
     private int winChangeMax;
 
     @OneToMany(mappedBy = "driver")
-    private Set<RaceStanding> standings;
+    private Set<RaceStandingEntity> standings;
 
-    public Driver() {}
+    public DriverEntity() {}
 
-    private Driver(Builder builder) {
+    private DriverEntity(Builder builder) {
         driverId = builder.driverId;
         firstName = builder.firstName;
         lastName = builder.lastName;
@@ -76,11 +75,11 @@ public class Driver {
         return winChangeMax;
     }
 
-    public Set<RaceStanding> getStandings() {
+    public Set<RaceStandingEntity> getStandings() {
         return standings;
     }
 
-    public void addStandings(RaceStanding raceStanding) {
+    public void addStandings(RaceStandingEntity raceStanding) {
         standings.add(raceStanding);
     }
 
@@ -140,8 +139,8 @@ public class Driver {
             return this;
         }
 
-        public Driver build() {
-            return new Driver(this);
+        public DriverEntity build() {
+            return new DriverEntity(this);
         }
     }
 }

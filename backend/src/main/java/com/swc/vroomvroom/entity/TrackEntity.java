@@ -11,7 +11,7 @@ import java.util.UUID;
 @Data
 @Entity
 @Table(name = "track")
-public class Track {
+public class TrackEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -23,13 +23,13 @@ public class Track {
     private float lapRecord;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "trackId")
-    private Set<Race> races = new HashSet<>();
+    private Set<RaceEntity> races = new HashSet<>();
 
-    public void addRace(Race race) {
+    public void addRace(RaceEntity race) {
         races.add(race);
     }
 
-    public void removeRace(Race race) {
+    public void removeRace(RaceEntity race) {
         races.remove(race);
     }
 

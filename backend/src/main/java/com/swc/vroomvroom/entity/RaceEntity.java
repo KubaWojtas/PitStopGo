@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 @Entity
 @Data
 @Table(name = "race")
-public class Race {
+public class RaceEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -21,13 +21,13 @@ public class Race {
     private LocalDate dateOfRace;
 
     @OneToMany(mappedBy = "race")
-    private Set<RaceStanding> standings;
+    private Set<RaceStandingEntity> standings;
 
-    public void addRaceStanding(RaceStanding raceStanding) {
+    public void addRaceStanding(RaceStandingEntity raceStanding) {
         standings.add(raceStanding);
     }
 
-    public Map<UUID, Integer> simulateRace(List<Driver> drivers) {
+    public Map<UUID, Integer> simulateRace(Set<DriverEntity> drivers) {
         Map<UUID, Integer> standing = new HashMap<>();
         ThreadLocalRandom random = ThreadLocalRandom.current();
 

@@ -1,6 +1,6 @@
 package com.swc.vroomvroom.dto;
 
-import com.swc.vroomvroom.entity.RaceStanding;
+import com.swc.vroomvroom.entity.RaceStandingEntity;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -14,8 +14,7 @@ public class DriverDto {
     private LocalDate birthdate;
     private String country;
     private String number;
-    private int teamId;
-    private Set<RaceStanding> standings;
+    private UUID teamId;
 
     private DriverDto(Builder builder) {
         driverId = builder.driverId;
@@ -25,7 +24,6 @@ public class DriverDto {
         country = builder.country;
         number = builder.number;
         teamId = builder.teamId;
-        standings = builder.standings;
     }
 
     public UUID getDriverId() {
@@ -52,12 +50,8 @@ public class DriverDto {
         return number;
     }
 
-    public int getTeamId() {
+    public UUID getTeamId() {
         return teamId;
-    }
-
-    public Set<RaceStanding> getStandings() {
-        return standings;
     }
 
     public static final class Builder {
@@ -67,8 +61,7 @@ public class DriverDto {
         private LocalDate birthdate;
         private String country;
         private String number;
-        private int teamId;
-        private Set<RaceStanding> standings;
+        private UUID teamId;
 
         public Builder withDriverId(UUID driverId) {
             this.driverId = driverId;
@@ -100,13 +93,8 @@ public class DriverDto {
             return this;
         }
 
-        public Builder withTeamId(int teamId) {
+        public Builder withTeamId(UUID teamId) {
             this.teamId = teamId;
-            return this;
-        }
-
-        public Builder withStandings(Set<RaceStanding> standings) {
-            this.standings = standings;
             return this;
         }
 

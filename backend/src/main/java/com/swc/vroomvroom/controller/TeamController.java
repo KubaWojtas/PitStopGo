@@ -1,6 +1,6 @@
 package com.swc.vroomvroom.controller;
 
-import com.swc.vroomvroom.entity.Team;
+import com.swc.vroomvroom.entity.TeamEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,27 +17,27 @@ public class TeamController {
     private TeamService service;
 
     @GetMapping("/{id}")
-    public Team findById(@PathVariable("id") UUID id) {
+    public TeamEntity findById(@PathVariable("id") UUID id) {
         return service.getTeamById(id);
     }
 
     @GetMapping()
-    public List<Team> findAll() {
+    public List<TeamEntity> findAll() {
         return service.getAllTeams();
     }
 
     @PostMapping("/add")
-    public Team addTeam(@RequestBody Team team) {
+    public TeamEntity addTeam(@RequestBody TeamEntity team) {
         return service.createTeam(team);
     }
 
     @PostMapping("/{id}/addDriver/{driverId}")
-    public Team addDriver(@PathVariable("id") UUID id, @PathVariable("driverId") UUID driverId) {
+    public TeamEntity addDriver(@PathVariable("id") UUID id, @PathVariable("driverId") UUID driverId) {
         return service.addDriver(id, driverId);
     }
 
     @PostMapping("/{id}/removeDriver/{driverId}")
-    public Team removeDriver(@PathVariable("id") UUID id, @PathVariable("driverId") UUID driverId) {
+    public TeamEntity removeDriver(@PathVariable("id") UUID id, @PathVariable("driverId") UUID driverId) {
         return service.removeDriver(id, driverId);
     }
 //

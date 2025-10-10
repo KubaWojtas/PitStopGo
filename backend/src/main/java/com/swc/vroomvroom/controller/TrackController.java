@@ -1,6 +1,6 @@
 package com.swc.vroomvroom.controller;
 
-import com.swc.vroomvroom.entity.Track;
+import com.swc.vroomvroom.entity.TrackEntity;
 import com.swc.vroomvroom.service.TrackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,17 +17,17 @@ public class TrackController {
     private TrackService service;
 
     @GetMapping("/{id}")
-    public Track findById(@PathVariable("id") UUID id) {
+    public TrackEntity findById(@PathVariable("id") UUID id) {
         return service.getTrackById(id);
     }
 
     @GetMapping()
-    public List<Track> findAll() {
+    public List<TrackEntity> findAll() {
         return service.getAllTracks();
     }
 
     @PostMapping("/add")
-    public Track addTrack(@RequestBody Track track) {
+    public TrackEntity addTrack(@RequestBody TrackEntity track) {
         return service.createTrack(track);
     }
 //

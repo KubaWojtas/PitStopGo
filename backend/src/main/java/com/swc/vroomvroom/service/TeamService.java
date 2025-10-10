@@ -1,14 +1,18 @@
 package com.swc.vroomvroom.service;
 
+import com.swc.vroomvroom.service.driver.DriverMapper;
+import com.swc.vroomvroom.service.driver.DriverService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.swc.vroomvroom.entity.Driver;
-import com.swc.vroomvroom.entity.Team;
+import com.swc.vroomvroom.entity.DriverEntity;
+import com.swc.vroomvroom.entity.TeamEntity;
 import com.swc.vroomvroom.repository.TeamRepository;
 import java.util.List;
 import java.util.UUID;
+
+import static com.swc.vroomvroom.service.driver.DriverMapper.mapToDriverEntity;
 
 @Service
 public class TeamService {
@@ -19,15 +23,15 @@ public class TeamService {
     @Autowired
     private DriverService driverService;
 
-    public Team getTeamById(UUID id) {
+    public TeamEntity getTeamById(UUID id) {
         return teamRepository.findById(id).orElse(null);
     }
 
-    public List<Team> getAllTeams() {
-        return (List<Team>) teamRepository.findAll();
+    public List<TeamEntity> getAllTeams() {
+        return (List<TeamEntity>) teamRepository.findAll();
     }
 
-    public Team createTeam(Team team) {
+    public TeamEntity createTeam(TeamEntity team) {
         return teamRepository.save(team);
     }
 
@@ -36,9 +40,9 @@ public class TeamService {
 //    }
 
     @Transactional
-    public Team addDriver(UUID teamId, UUID driverId) {
-        Team team = getTeamById(teamId);
-        Driver driver = driverService.getDriverById(driverId);
+    public TeamEntity addDriver(UUID teamId, UUID driverId) {
+        TeamEntity team = getTeamById(teamId);
+        DriverEntity driver = mapToDriverEntity(driverService.getDriverById(driverId));
 //        driver.setTeamId(teamId);
 
         team.addDriver(driver);
@@ -46,9 +50,9 @@ public class TeamService {
     }
 
     @Transactional
-    public Team removeDriver(UUID teamId, UUID driverId) {
-        Team team = getTeamById(teamId);
-        Driver driver = driverService.getDriverById(driverId);
+    public TeamEntity removeDriver(UUID teamId, UUID driverId) {
+        TeamEntity team = getTeamById(teamId);
+        DriverEntity driver =  mapToDriverEntity(driverService.getDriverById(driverId));
 //        driver.setTeamId(null);
 
         team.removeDriver(driver);

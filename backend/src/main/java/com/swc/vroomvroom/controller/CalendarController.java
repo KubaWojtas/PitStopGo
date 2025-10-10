@@ -1,7 +1,7 @@
 package com.swc.vroomvroom.controller;
 
 import com.swc.vroomvroom.dto.SeasonResultsDto;
-import com.swc.vroomvroom.entity.Calendar;
+import com.swc.vroomvroom.entity.CalendarEntity;
 import com.swc.vroomvroom.service.CalendarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,12 +18,12 @@ public class CalendarController {
     private CalendarService service;
 
     @GetMapping("/{id}")
-    public Calendar findById(@PathVariable("id") UUID id) {
+    public CalendarEntity findById(@PathVariable("id") UUID id) {
         return service.getCalendarById(id);
     }
 
     @GetMapping("")
-    public List<Calendar> findAll() {
+    public List<CalendarEntity> findAll() {
         return service.getAllCalendars();
     }
 
@@ -38,17 +38,17 @@ public class CalendarController {
     }
 
     @PostMapping("/add")
-    public Calendar addCalender(@RequestBody Calendar calendar) {
+    public CalendarEntity addCalender(@RequestBody CalendarEntity calendar) {
         return service.createCalender(calendar);
     }
 
     @PostMapping("/{id}/addRace/{trackId}")
-    public Calendar addRace(@PathVariable("id") UUID id, @PathVariable("trackId") UUID trackId) {
+    public CalendarEntity addRace(@PathVariable("id") UUID id, @PathVariable("trackId") UUID trackId) {
         return service.addRace(id, trackId);
     }
 
     @PostMapping("/{id}/removeRace/{raceId}")
-    public Calendar removeRace(@PathVariable("id") UUID id, @PathVariable("raceId") UUID raceId) {
+    public CalendarEntity removeRace(@PathVariable("id") UUID id, @PathVariable("raceId") UUID raceId) {
         return service.removeRace(id, raceId);
     }
 

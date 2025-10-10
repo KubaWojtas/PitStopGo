@@ -2,7 +2,7 @@ package com.swc.vroomvroom.service;
 
 import com.swc.vroomvroom.dto.DriverStandingDto;
 import com.swc.vroomvroom.dto.RaceStandingDto;
-import com.swc.vroomvroom.entity.RaceStanding;
+import com.swc.vroomvroom.entity.RaceStandingEntity;
 import com.swc.vroomvroom.repository.RaceStandingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,10 +17,10 @@ public class RaceStandingService {
     private RaceStandingRepository raceStandingRepository;
 
     public RaceStandingDto getRaceStandingById(UUID id) {
-        List<RaceStanding> raceStandings = (List<RaceStanding>) raceStandingRepository.findAll();
+        List<RaceStandingEntity> raceStandings = (List<RaceStandingEntity>) raceStandingRepository.findAll();
         RaceStandingDto result = new RaceStandingDto();
         List<DriverStandingDto> resultaten = result.getResultaten();
-        for (RaceStanding r : raceStandings) {
+        for (RaceStandingEntity r : raceStandings) {
             if (r.getRace().getRaceId() == id) {
                 DriverStandingDto driverStandingDto = new DriverStandingDto();
                 driverStandingDto.setPosition(Integer.parseInt(r.getPosition()));
@@ -34,7 +34,7 @@ public class RaceStandingService {
         return result;
     }
 
-    public void createRaceStanding(RaceStanding raceStanding) {
+    public void createRaceStanding(RaceStandingEntity raceStanding) {
         raceStandingRepository.save(raceStanding);
     }
 }

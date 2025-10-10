@@ -1,7 +1,6 @@
 package com.swc.vroomvroom.dto;
 
-import lombok.Data;
-import com.swc.vroomvroom.entity.Driver;
+import com.swc.vroomvroom.entity.DriverEntity;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,7 +11,7 @@ public class TeamDto {
     private UUID teamId;
     private String name;
     private String country;
-    private Set<Driver> drivers = new HashSet<>();
+    private Set<DriverEntity> drivers = new HashSet<>();
 
     private TeamDto(Builder builder) {
         teamId = builder.teamId;
@@ -33,7 +32,7 @@ public class TeamDto {
         return country;
     }
 
-    public Set<Driver> getDrivers() {
+    public Set<DriverEntity> getDrivers() {
         return drivers;
     }
 
@@ -41,7 +40,7 @@ public class TeamDto {
         private UUID teamId;
         private String name;
         private String country;
-        private Set<Driver> drivers;
+        private Set<DriverEntity> drivers;
 
         public Builder withTeamId(UUID teamId) {
             this.teamId = teamId;
@@ -58,7 +57,7 @@ public class TeamDto {
             return this;
         }
 
-        public Builder withDrivers(Set<Driver> drivers) {
+        public Builder withDrivers(Set<DriverEntity> drivers) {
             this.drivers = drivers;
             return this;
         }

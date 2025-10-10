@@ -3,17 +3,14 @@ package com.swc.vroomvroom.service;
 import jakarta.transaction.Transactional;
 import com.swc.vroomvroom.dto.RaceStandingDto;
 import com.swc.vroomvroom.dto.SeasonResultsDto;
-import com.swc.vroomvroom.entity.Calendar;
-import com.swc.vroomvroom.entity.Race;
-import com.swc.vroomvroom.entity.RaceStanding;
-import com.swc.vroomvroom.entity.Track;
+import com.swc.vroomvroom.entity.CalendarEntity;
+import com.swc.vroomvroom.entity.RaceEntity;
 import com.swc.vroomvroom.repository.CalendarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 @Service
@@ -26,15 +23,15 @@ public class CalendarService {
     @Autowired
     private RaceService raceService;
 
-    public Calendar getCalendarById(UUID id) {
+    public CalendarEntity getCalendarById(UUID id) {
         return calendarRepository.findById(id).orElse(null);
     }
 
-    public List<Calendar> getAllCalendars() {
-        return (List<Calendar>) calendarRepository.findAll();
+    public List<CalendarEntity> getAllCalendars() {
+        return (List<CalendarEntity>) calendarRepository.findAll();
     }
 
-    public Calendar createCalender(Calendar calendar) {
+    public CalendarEntity createCalender(CalendarEntity calendar) {
         return calendarRepository.save(calendar);
     }
 
@@ -53,9 +50,9 @@ public class CalendarService {
 //    }
 
     public SeasonResultsDto simulateCalendar(UUID id) {
-        Calendar calendar = getCalendarById(id);
+        CalendarEntity calendar = getCalendarById(id);
         List<RaceStandingDto> standings= new ArrayList<>();
-        for (Race race: calendar.getRaces()) {
+        for (RaceEntity race: calendar.getRaces()) {
             RaceStandingDto raceStanding = raceService.simulateRace(race.getRaceId());
             standings.add(raceStanding);
         }
@@ -65,8 +62,8 @@ public class CalendarService {
     }
 
     @Transactional
-    public Calendar addRace(UUID calenderId, UUID trackId) {
-        Calendar calendar = getCalendarById(calenderId);
+    public CalendarEntity addRace(UUID calenderId, UUID trackId) {
+        CalendarEntity calendar = getCalendarById(calenderId);
 //        Track track = trackService.getTrackById(trackId);
 //        Race race = new Race();
 //        race.setCalendarId(calenderId);
@@ -78,9 +75,9 @@ public class CalendarService {
     }
 
     @Transactional
-    public Calendar removeRace(UUID calenderId, UUID raceId) {
-        Calendar calendar = getCalendarById(calenderId);
-        Race race = raceService.getRaceById(raceId);
+    public CalendarEntity removeRace(UUID calenderId, UUID raceId) {
+        CalendarEntity calendar = getCalendarById(calenderId);
+        RaceEntity race = raceService.getRaceById(raceId);
         calendar.removeRace(race);
         race.setTrackId(null);
         race.setCalendarId(null);

@@ -1,7 +1,6 @@
 package com.swc.vroomvroom.dto;
 
-import lombok.Data;
-import com.swc.vroomvroom.entity.Race;
+import com.swc.vroomvroom.entity.RaceEntity;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,7 +14,7 @@ public class TrackDto {
     private String country;
     private double distance;
     private float lapRecord;
-    private Set<Race> races = new HashSet<>();
+    private Set<RaceEntity> races = new HashSet<>();
 
     private TrackDto(Builder builder) {
         trackId = builder.trackId;
@@ -51,7 +50,7 @@ public class TrackDto {
         return lapRecord;
     }
 
-    public Set<Race> getRaces() {
+    public Set<RaceEntity> getRaces() {
         return races;
     }
 
@@ -62,7 +61,7 @@ public class TrackDto {
         private String country;
         private double distance;
         private float lapRecord;
-        private Set<Race> races;
+        private Set<RaceEntity> races;
 
         public Builder withTrackId(UUID trackId) {
             this.trackId = trackId;
@@ -94,7 +93,7 @@ public class TrackDto {
             return this;
         }
 
-        public Builder withRaces(Set<Race> races) {
+        public Builder withRaces(Set<RaceEntity> races) {
             this.races = races;
             return this;
         }

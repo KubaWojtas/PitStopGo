@@ -10,7 +10,7 @@ import java.util.UUID;
 @Data
 @Entity
 @Table(name = "team")
-public class Team {
+public class TeamEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -19,13 +19,13 @@ public class Team {
     private String country;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "teamId")
-    private Set<Driver> drivers = new HashSet<>();
+    private Set<DriverEntity> drivers = new HashSet<>();
 
-    public void addDriver(Driver driver) {
+    public void addDriver(DriverEntity driver) {
         drivers.add(driver);
     }
 
-    public void removeDriver(Driver driver) {
+    public void removeDriver(DriverEntity driver) {
         drivers.remove(driver);
     }
 

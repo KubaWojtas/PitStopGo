@@ -12,7 +12,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Embeddable
-public class RaceStandingKey implements Serializable {
+public class RaceStandingEmbeddedKey implements Serializable {
     UUID driverId;
     UUID raceId;
 }
